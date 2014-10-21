@@ -57,30 +57,35 @@ public class characterController : MonoBehaviour {
 		else if(move < 0 && facingRight){
 			Flip ();
 		}
-		// if the character falls from the level, restart at starting position.
+		// ======================================
+		// PLAYER RESTART POSITION
+		// ======================================
+		// player falls from the level
 		if (transform.position.y <= -4.0f) {
-			transform.position = new Vector3(-5.5f,1.1f,-2.0f);
+			transform.position = new Vector2(-5.5f,1.1f);
 		}
+
+
 	}
 
 	void Update () {
 		// character can trampolin if it's grounded and on trampolin and player hits jump
-		if (grounded && trampolin && Input.GetButtonDown("Jump")) {
+		if (/*grounded && */trampolin/* && Input.GetButtonDown("Jump")*/) {
 			anim.SetBool ("Ground", false);
-			rigidbody2D.AddForce(new Vector2(0, trampolinForce));
+			rigidbody2D.velocity = new Vector2(0f,20f);
+			// rigidbody2D.AddForce(new Vector2(0, trampolinForce));
+			trampolin = false;
 		}
 		// character can jump if it's grounded and player hits jump
 		else if (grounded && Input.GetButtonDown("Jump")) { // ((grounded || !doubleJumpUsed) &&...
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 
-			//if(!doubleJumpUsed && !grounded){
-			//	doubleJumpUsed = true;
-			//}
 		}
 		// killerScreen
 		if (!inScreen) {
-			transform.position = new Vector3(-5.5f,1.1f,-2.0f);
+			transform.position = new Vector2(-5.5f,1.1f);
+			rigidbody2D.velocity = Vector2.zero;
 		}
 	}
 
