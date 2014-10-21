@@ -88,10 +88,10 @@ public class characterController : MonoBehaviour {
 				rigidbody2D.velocity = Vector2.zero;
 				playerDied = true;
 			}
-			if (transform.position.x > (cameraControl.cameraPositionX+11)){
-				transform.position = new Vector3(cameraControl.cameraPositionX-11,
-				                                 transform.position.y, transform.position.z);
-			}
+			//if (transform.position.x > (cameraControl.cameraPositionX+11)){
+			//	transform.position = new Vector3(cameraControl.cameraPositionX-11,
+			//	                                 transform.position.y, transform.position.z);
+			//}
 		}
 	}
 
