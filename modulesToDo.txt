@@ -1,0 +1,58 @@
+Modules
+
+
+
+Character
+	Jumping (+Coding / animation)
+	+Running (Coding / animation)
+	Collect stuff (Coding)
+	Throw knives (Coding / animation)
+	(Reflective shield (Coding / animation))
+
+Level
+	Background 2D drawings "landscapes" (texture)
+		Come up with Static ideas (tent, animals, blood) (texture)
+		Secondary background (moving BG)
+			swinging guys in ropes (texture / coding)
+
+	Midground
+		+Bouncy platform (texture / coding)
+		Crumbling platform (texture / coding)
+		Moving platform (texture / coding)
+		Vertical platform (texture / coding)
+		Random platform (texture / coding)
+
+	Level features
+		time limit and faster music (coding)
+		screen scroll (+coding / texture and/or animation)
+		wind current + arrow indication (allows larger/shorter jump) (coding)
+
+	Foreground Audience
+		cheering audience if player is awesome (texture / coding)
+NPCs
+	Animals, riding animals (texture / coding / animation)
+	Lure a giraf to get to a higher platform (texture / coding / animation)
+	Bosses (texture / coding / animation)
+
+Items
+	sparkling bacon give plus score, but minus time (texture / coding)
+	collectible power ups to throw knives (texture / coding)
+	maybe a ninja rope (texture / coding)
+	pickup Hay(bacon) to lure the giraf
+	pickup beef to passify the lion
+
+GUI
+	time
+	items
+	lives
+	score
+	objectives splash on screen at start
+	in-game pop-up messages
+		ex. Hurry up! or... Collect the Bacon!
+	GUI text to have shadows?
+Bugfixing
+	-
+
+-Music/Sound
+	BGM
+	SFX
