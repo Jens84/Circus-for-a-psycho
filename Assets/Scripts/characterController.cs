@@ -3,21 +3,19 @@ using System.Collections;
 
 public class characterController : MonoBehaviour {
 	public static bool playerDied = false;
-	// used to flip the character sprite
-	private bool facingRight = true;
+	private bool facingRight = true;		// used to flip the character sprite
 
 	public float maxSpeed = 10f;
 	public float jumpForce = 700f;
 	public float trampolinForce = 1000f;
 
-	Animator anim;
-
-	// ground check for use in jumping
-	bool grounded = false;
-	bool trampolin = false;
-	bool inScreen = true;
-	public Transform groundCheck;
-	public Transform character;
+	Animator anim;							// attaches animations to the character
+	
+	bool grounded = false;					// ground check for use in jumping
+	bool trampolin = false;					// check for use in jumping on trampolin
+	bool inScreen = true;					// is the character outside of camera bounds
+	public Transform groundCheck;			// in-game physics test for ground and trampolin
+	public Transform character;				// in-game physics test for camera bounds
 	float groundRadius = 0.2f;
 	public LayerMask whatIsGround;
 	public LayerMask whatIsTrampolin;
@@ -81,11 +79,19 @@ public class characterController : MonoBehaviour {
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 		}
-		// killerScreen
+		// ======================================
+		// CHECK IF PLAYER IS OUTSIDE SCREEN
+		// ======================================
 		if (!inScreen) {
-			transform.position = new Vector3(-5.5f,1.1f, -2.0f);
-			rigidbody2D.velocity = Vector2.zero;
-			playerDied = true;
+			if (transform.position.x < (cameraControl.cameraPositionX-13)){ // kills player if he lags behind
+				transform.position = new Vector3(-5.5f,1.1f, -2.0f);
+				rigidbody2D.velocity = Vector2.zero;
+				playerDied = true;
+			}
+			if (transform.position.x > (cameraControl.cameraPositionX+11)){
+				transform.position = new Vector3(cameraControl.cameraPositionX-11,
+				                                 transform.position.y, transform.position.z);
+			}
 		}
 	}
 
