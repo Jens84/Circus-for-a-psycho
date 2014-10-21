@@ -62,7 +62,7 @@ public class characterController : MonoBehaviour {
 		// ======================================
 		// player falls from the level
 		if (transform.position.y <= -4.0f) {
-			transform.position = new Vector2(-5.5f,1.1f);
+			transform.position = new Vector3(-5.5f,1.1f, -2.0f);
 		}
 
 
@@ -84,7 +84,7 @@ public class characterController : MonoBehaviour {
 		}
 		// killerScreen
 		if (!inScreen) {
-			transform.position = new Vector2(-5.5f,1.1f);
+			transform.position = new Vector3(-5.5f,1.1f, -2.0f);
 			rigidbody2D.velocity = Vector2.zero;
 		}
 	}
