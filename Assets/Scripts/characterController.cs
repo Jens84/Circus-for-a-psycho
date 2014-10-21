@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class characterController : MonoBehaviour {
+	public static bool playerDied = false;
 	// used to flip the character sprite
 	private bool facingRight = true;
 
@@ -58,14 +59,13 @@ public class characterController : MonoBehaviour {
 			Flip ();
 		}
 		// ======================================
-		// PLAYER RESTART POSITION
+		// PLAYER RESTART POSITION (CHECKPOINT)
 		// ======================================
 		// player falls from the level
 		if (transform.position.y <= -4.0f) {
 			transform.position = new Vector3(-5.5f,1.1f, -2.0f);
+			playerDied = true;
 		}
-
-
 	}
 
 	void Update () {
@@ -80,12 +80,12 @@ public class characterController : MonoBehaviour {
 		else if (grounded && Input.GetButtonDown("Jump")) { // ((grounded || !doubleJumpUsed) &&...
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
-
 		}
 		// killerScreen
 		if (!inScreen) {
 			transform.position = new Vector3(-5.5f,1.1f, -2.0f);
 			rigidbody2D.velocity = Vector2.zero;
+			playerDied = true;
 		}
 	}
 
