@@ -16,7 +16,7 @@ Level
 			swinging guys in ropes (texture / coding)
 
 	Midground
-		+Bouncy platform (texture / coding)
+		Bouncy platform (texture / +coding)
 		Crumbling platform (texture / coding)
 		Moving platform (texture / coding)
 		Vertical platform (texture / coding)

@@ -7,18 +7,18 @@ public class characterController : MonoBehaviour {
 
 	public float maxSpeed = 10f;
 	public float jumpForce = 700f;
-	public float trampolinForce = 1000f;
+	public float trampolineForce = 1000f;
 
 	Animator anim;							// attaches animations to the character
 	
 	bool grounded = false;					// ground check for use in jumping
-	bool trampolin = false;					// check for use in jumping on trampolin
+	public static bool trampoline = false;	// check for use in jumping on trampolin
 	bool inScreen = true;					// is the character outside of camera bounds
 	public Transform groundCheck;			// in-game physics test for ground and trampolin
 	public Transform character;				// in-game physics test for camera bounds
 	float groundRadius = 0.2f;
 	public LayerMask whatIsGround;
-	public LayerMask whatIsTrampolin;
+	public LayerMask whatIsTrampoline;
 	public LayerMask whatIsScreenBorder;
 
 
@@ -34,7 +34,7 @@ public class characterController : MonoBehaviour {
 	void FixedUpdate () {
 		// check if character is grounded
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
-		trampolin = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsTrampolin);
+		trampoline = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsTrampoline);
 		inScreen = Physics2D.OverlapCircle (character.position, groundRadius, whatIsScreenBorder);
 		anim.SetBool ("Ground", grounded);
 
@@ -67,12 +67,10 @@ public class characterController : MonoBehaviour {
 	}
 
 	void Update () {
-		// character can trampolin if it's grounded and on trampolin and player hits jump
-		if (/*grounded && */trampolin/* && Input.GetButtonDown("Jump")*/) {
+		// character will trampoline if on top of trampoline
+		if (trampoline) {
 			anim.SetBool ("Ground", false);
 			rigidbody2D.velocity = new Vector2(0f,20f);
-			// rigidbody2D.AddForce(new Vector2(0, trampolinForce));
-			trampolin = false;
 		}
 		// character can jump if it's grounded and player hits jump
 		else if (grounded && Input.GetButtonDown("Jump")) { // ((grounded || !doubleJumpUsed) &&...
