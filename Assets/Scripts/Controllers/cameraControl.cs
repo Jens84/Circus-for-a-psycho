@@ -17,5 +17,10 @@ public class cameraControl : MonoBehaviour {
 			transform.position = new Vector3 (-5.5f, 3.6f, -8.0f);
 			characterController.playerDied = false;
 		}
+
+		if (oldCharacterController.playerDied) {
+			transform.position = new Vector3 (-5.5f, 3.6f, -8.0f);
+			oldCharacterController.playerDied = false;
+		}
 	}
 }
