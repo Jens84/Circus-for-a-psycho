@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class trampolineScript : MonoBehaviour {
-	void OnCollisionEnter2D (Collision2D other) 
+	void Update () 
 	{
-		if (other.gameObject.tag == "Player")
+		if (characterController.trampoline && !audio.isPlaying)
 		{
 			audio.Play();
+			characterController.trampoline = false;
 		}
 	}
 }

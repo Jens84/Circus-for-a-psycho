@@ -4,29 +4,29 @@ using System.Collections;
 public class characterController : MonoBehaviour {
 
 	Animator anim;
-	float groundRadius = 0.2f;						// used in conjunction with groundCheck
 	bool grounded = false;							// is the player on the ground
 	bool movingOnPlatform = false;					// is the player on a moving platform
-	bool trampoline = false;						// is the player on a trampoline
+	float groundRadius = 0.2f;						// used in conjunction with groundCheck
 
-	public static bool playerDied = false;			// used to reset the camera position
-	public static float characterPositionY = 1.1f;	// used for vertical camera tracking 
+	public static bool trampoline = false;			// is the player on a trampoline
+	public static bool playerDied = false;			// used to reset the camera position	 
 	public static bool playerJumped = false;
 	public static bool playerJumped2 = false;
 	public static bool playerJumped3 = false;
 	public static bool playerJumped4 = false;
+	public static float characterPositionY = 1.1f;	// used for vertical camera tracking
 	public float maxSpeed = 10f;
 	public float jumpForce = 700f;
+	public float gameOverY = -4.0f;
 	public LayerMask whatIsGround;					// defines which objects count as ground
 	public LayerMask whatIsTrampoline;				// defines which objects count as trampolines
 	public Transform groundCheck;
-	public float gameOverY = -4.0f;
 
 	private static int bacon;
-	private Vector3 startPosition;
-	private float move;
 	private bool facingRight = true;				// used to flip the player sprite
+	private float move;
 	private MovingPlatform currentMovingPlatform;	// the moving platform the player is on
+	private Vector3 startPosition;
 
 	void OnCollisionEnter2D(Collision2D c) {
 		if (c.gameObject.tag == "MovingPlatform" && grounded) {
@@ -132,7 +132,6 @@ public class characterController : MonoBehaviour {
 		if (trampoline) {									// player will trampoline if on top of trampoline
 			anim.SetBool ("Ground", false);
 			rigidbody2D.velocity = new Vector2(0f,20f);
-			trampoline = false;
 			//playerJumped = true;							// activate to use in vertical platforms
 			//playerJumped2 = true;							// activate to use in vertical platforms
 		}
