@@ -19,13 +19,13 @@ Level
 		Bouncy platform (texture / +coding)
 		Crumbling platform (texture / coding)
 		Moving platform (texture / coding)
-		Vertical platform (texture / coding)
+		+Vertical platform (texture / coding)
 		Random platform (texture / coding)
 
 	Level features
 		time limit and faster music (coding)
 		screen scroll (+coding / texture and/or animation)
-		wind current + arrow indication (allows larger/shorter jump) (coding)
+		wind current (allows larger/shorter jump) (coding)
 
 	Foreground Audience
 		cheering audience if player is awesome (texture / coding)

@@ -3,42 +3,39 @@ using System.Collections;
 
 public class characterController : MonoBehaviour {
 
-	Animator anim;							// attaches animations to the character
-	float groundRadius = 0.2f;
-	bool grounded = false;					// ground check for use in jumping
-	bool trampolin = false;					// check for use in jumping on trampolin
-	bool inScreen = true;					// is the character outside of camera bounds
+	Animator anim;
+	float groundRadius = 0.2f;						// used in conjunction with groundCheck
+	bool grounded = false;							// is the player on the ground
+	bool trampoline = false;						// is the player on a trampoline
 
-	public Transform groundCheck;			// in-game physics test for ground and trampolin
-	public Transform character;				// in-game physics test for camera bounds
-	public LayerMask whatIsGround;
-	public LayerMask whatIsTrampolin;
-	public LayerMask whatIsScreenBorder;
-	public static bool playerDied = false;
+	public static bool playerDied = false;			// used to reset the camera position
+	public static float characterPositionY = 1.1f;	// used for vertical camera tracking 
+	public static bool playerJumped = false;
+	public static bool playerJumped2 = false;
+	public static bool playerJumped3 = false;
+	public static bool playerJumped4 = false;
 	public float maxSpeed = 10f;
 	public float jumpForce = 700f;
-	public float trampolinForce = 1000f;
+	public LayerMask whatIsGround;					// defines which objects count as ground
+	public LayerMask whatIsTrampoline;				// defines which objects count as trampolines
+	public Transform groundCheck;
 	public float gameOverY = -4.0f;
 
 	private static int bacon;
 	private Vector3 startPosition;
-	private bool facingRight = true;		// used to flip the character sprite
-	private float move;
-
-	//bool doubleJumpUsed = false;
+	private bool facingRight = true;				// used to flip the player sprite
 
 	void Start () {
-		// set animator to gameObject
-		anim = GetComponent<Animator> ();
+		anim = GetComponent<Animator> ();			// attaches animator to the player
 		// Connect to the GameEventManager
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
-		startPosition = new Vector3(-5.5f,1.1f, -2.0f);
-		renderer.enabled = false;
-		rigidbody2D.isKinematic = true;
+		startPosition = new Vector3(-6.0f,1.1f, -2.0f);
+		renderer.enabled = false;					// Disable the character before game starts
+		rigidbody2D.isKinematic = true;				// Used for GameStart and GameOver
 		enabled = false;
 	}
-	
+
 	private void GameStart () {
 		bacon = 0;
 		GUIManager.SetBacon(bacon);
@@ -59,78 +56,82 @@ public class characterController : MonoBehaviour {
 		rigidbody2D.isKinematic = true;
 		enabled = false;
 	}
-
+	
 	void FixedUpdate () {
-		// check if character is grounded
+		// ======================================
+		// CHECKS ARE MADE
+		// ======================================
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
-		trampolin = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsTrampolin);
-		inScreen = Physics2D.OverlapCircle (character.position, groundRadius, whatIsScreenBorder);
-		anim.SetBool ("Ground", grounded);
-
-		//if (grounded) {
-		//	doubleJumpUsed = false;
-		//}
-
-		// update vSpeed boolean for use in animation
-		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
-
-		move = Input.GetAxis ("Horizontal");
-		anim.SetFloat ("Speed", Mathf.Abs (move));
+		trampoline = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsTrampoline);
+													// we should change this to a collision detection, so
+													// trampoline can active/deactivate vertical platforms
+													//currently we recieve several activations
+		// ======================================
+		// MOVING THE CHARACTER
+		// ======================================
+		float move = Input.GetAxis ("Horizontal");
 		rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
-
-		if (move > 0 && !facingRight) {
+		// ======================================
+		// ANIMATIONS VARIABLES
+		// ======================================
+		anim.SetBool ("Ground", grounded);					// for use in jumping
+		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);	// for use in jump and fall animation
+		anim.SetFloat ("Speed", Mathf.Abs (move));			// for use in run animation
+		// ======================================
+		// CALLING SPRITE FLIPS
+		// ======================================
+		if (move > 0 && !facingRight) {			// flip player sprite, if walking opposite way of facing
 			Flip ();
 		}
 		else if(move < 0 && facingRight){
 			Flip ();
 		}
-
 		// ======================================
-		// PLAYER RESTART POSITION (CHECKPOINT)
+		// PLAYER FALLS FROM THE LEVEL
 		// ======================================
-		// player falls from the level
-		
-		if(transform.localPosition.y < gameOverY){
+		if (transform.position.y <= gameOverY) {
 			transform.position = startPosition;
 			playerDied = true;
 			GameEventManager.TriggerGameOver();
 		}
-		/*if (transform.position.y <= -4.0f) {
-			transform.position = startPosition;
-			playerDied = true;
-		}*/
 	}
-
+	
 	void Update () {
-		// character can trampolin if it's grounded and on trampolin and player hits jump
-		if (/*grounded && */trampolin/* && Input.GetButtonDown("Jump")*/) {
+		characterPositionY = transform.position.y;			// used for vertical camera tracking
+		// ======================================
+		// JUMPING AND TRAMPOLINE
+		// ======================================
+		if (trampoline) {									// player will trampoline if on top of trampoline
 			anim.SetBool ("Ground", false);
 			rigidbody2D.velocity = new Vector2(0f,20f);
-			// rigidbody2D.AddForce(new Vector2(0, trampolinForce));
-			trampolin = false;
+			trampoline = false;
+			//playerJumped = true;							// activate to use in vertical platforms
+			//playerJumped2 = true;							// activate to use in vertical platforms
 		}
-		// character can jump if it's grounded and player hits jump
-		if (grounded && Input.GetButtonDown("Jump")) { // ((grounded || !doubleJumpUsed) &&...
+		else if (grounded && Input.GetButtonDown("Jump")) {	// player can jump if grounded
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
+			playerJumped = true;							// used for vertical platforms
+			playerJumped2 = true;							// used for vertical platforms
+			playerJumped3 = true;							// used for horizontal platforms
+			playerJumped4 = true;							// used for horizontal platforms
 		}
 		// ======================================
-		// CHECK IF PLAYER IS OUTSIDE SCREEN
+		// CAMERA CATCHES UP TO PLAYER
 		// ======================================
-		if (!inScreen) {
-			if (transform.position.x < (cameraControl.cameraPositionX-13)){ // kills player if he lags behind
-				transform.position = new Vector3(-5.5f,1.1f, -2.0f);
-				rigidbody2D.velocity = Vector2.zero;
-				playerDied = true;
-			}
-			//if (transform.position.x > (cameraControl.cameraPositionX+11)){
-			//	transform.position = new Vector3(cameraControl.cameraPositionX-11,
-			//	                                 transform.position.y, transform.position.z);
-			//}
+		if (transform.position.x < (cameraControl.cameraPositionX-13)){ // kills player if he lags behind
+			transform.position = startPosition;
+			rigidbody2D.velocity = Vector2.zero;
+			playerDied = true;
 		}
+		// ======================================
+		// VERTICAL BAR FLIP
+		// ======================================
 	}
+	// ======================================
+	// PLAYER SPRITE FLIPS
+	// ======================================
 
-	// flips the sprite from left to right, when changing direction in game
 	void Flip(){
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
