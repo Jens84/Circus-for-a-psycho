@@ -148,9 +148,10 @@ public class characterController : MonoBehaviour {
 		// CAMERA CATCHES UP TO PLAYER
 		// ======================================
 		if (transform.position.x < (cameraControl.cameraPositionX-13)){ // kills player if he lags behind
-			transform.position = startPosition;
 			rigidbody2D.velocity = Vector2.zero;
+			transform.position = startPosition;
 			playerDied = true;
+			GameEventManager.TriggerGameOver();
 		}
 		// ======================================
 		// VERTICAL BAR FLIP
