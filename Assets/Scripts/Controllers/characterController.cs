@@ -6,6 +6,7 @@ public class characterController : MonoBehaviour {
 	Animator anim;
 	float groundRadius = 0.2f;						// used in conjunction with groundCheck
 	bool grounded = false;							// is the player on the ground
+	bool movingOnPlatform = false;					// is the player on a moving platform
 	bool trampoline = false;						// is the player on a trampoline
 
 	public static bool playerDied = false;			// used to reset the camera position
@@ -23,7 +24,23 @@ public class characterController : MonoBehaviour {
 
 	private static int bacon;
 	private Vector3 startPosition;
+	private float move;
 	private bool facingRight = true;				// used to flip the player sprite
+	private MovingPlatform currentMovingPlatform;	// the moving platform the player is on
+
+	void OnCollisionEnter2D(Collision2D c) {
+		if (c.gameObject.tag == "MovingPlatform" && grounded) {
+			movingOnPlatform = true;
+			currentMovingPlatform = c.gameObject.transform.parent.GetComponent<MovingPlatform>();
+		}
+	}
+	
+	void OnCollisionExit2D(Collision2D c) {
+		if (c.gameObject.tag == "MovingPlatform") {
+			movingOnPlatform = false;
+			currentMovingPlatform = null;
+		}
+	}
 
 	void Start () {
 		anim = GetComponent<Animator> ();			// attaches animator to the player
@@ -67,16 +84,11 @@ public class characterController : MonoBehaviour {
 													// trampoline can active/deactivate vertical platforms
 													//currently we recieve several activations
 		// ======================================
-		// MOVING THE CHARACTER
-		// ======================================
-		float move = Input.GetAxis ("Horizontal");
-		rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
-		// ======================================
 		// ANIMATIONS VARIABLES
 		// ======================================
 		anim.SetBool ("Ground", grounded);					// for use in jumping
 		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);	// for use in jump and fall animation
-		anim.SetFloat ("Speed", Mathf.Abs (move));			// for use in run animation
+		anim.SetFloat ("Speed", Mathf.Abs (move));
 		// ======================================
 		// CALLING SPRITE FLIPS
 		// ======================================
@@ -97,7 +109,23 @@ public class characterController : MonoBehaviour {
 	}
 	
 	void Update () {
+		move = Input.GetAxis ("Horizontal");				// for use in run animation
+
 		characterPositionY = transform.position.y;			// used for vertical camera tracking
+
+		// ======================================
+		// MOVING THE CHARACTER
+		// ======================================
+		if(movingOnPlatform)
+			rigidbody2D.MovePosition (transform.position
+			                          + currentMovingPlatform.direction * 1.35f
+			                          * currentMovingPlatform.platformSpeed 
+			                          * Time.fixedDeltaTime
+			                          + new Vector3 (move * maxSpeed, rigidbody2D.velocity.y, 0)
+			                          * Time.fixedDeltaTime);
+		else
+			rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
+
 		// ======================================
 		// JUMPING AND TRAMPOLINE
 		// ======================================
