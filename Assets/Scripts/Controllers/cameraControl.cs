@@ -7,6 +7,21 @@ public class cameraControl : MonoBehaviour {
 	public static float cameraPositionX;		// send x-coordinate of screen to check if player lags behind
 												// this way we only kill player on left side of the screen
 
+	void Start () {
+		// Connect to the GameEventManager
+		GameEventManager.GameStart += GameStart;
+		GameEventManager.GameOver += GameOver;
+		enabled = false;
+	}
+
+	private void GameStart () {
+		enabled = true;
+	}
+	
+	private void GameOver () {
+		enabled = false;
+	}
+
 	void FixedUpdate(){
 		// ======================================
 		// TRACKING PLAYER VERTICALLY

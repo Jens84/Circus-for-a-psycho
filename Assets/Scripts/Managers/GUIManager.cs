@@ -48,7 +48,7 @@ public class GUIManager : MonoBehaviour {
 		gameOverText.enabled = false;
 		instructionsText.enabled = false;
 		titleText.enabled = false;
-		baconTexture.enabled = true;
+		//baconTexture.enabled = true;
 		enabled = false;
 	}
 	
