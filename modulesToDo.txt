@@ -1,5 +1,9 @@
 Modules
 
+texture for trampoline
+texture for bacon
+texture for level
+texture for BG
 
 
 Character
@@ -18,7 +22,7 @@ Level
 	Midground
 		Bouncy platform (texture / +coding)
 		Crumbling platform (texture / coding)
-		Moving platform (texture / coding)
+		Moving platform (texture / +coding)
 		+Vertical platform (texture / coding)
 		Random platform (texture / coding)
 
@@ -51,7 +55,8 @@ GUI
 		ex. Hurry up! or... Collect the Bacon!
 	GUI text to have shadows?
 Bugfixing
-	-
+	character movement on moving platform
+	trampoline sound
 
 -Music/Sound
 	BGM
