@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: ab6a5f44203b3ac4aae3871fe7d6ca93
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - baconCollected: {fileID: 100000, guid: 04f4ae57bb6331d42a2419d40c615103, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
