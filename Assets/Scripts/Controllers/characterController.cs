@@ -33,8 +33,17 @@ public class characterController : MonoBehaviour {
 			movingOnPlatform = true;
 			currentMovingPlatform = c.gameObject.transform.parent.GetComponent<MovingPlatform>();
 		}
+		// ======================================
+		// PLAYER HITS SPIKES
+		// ======================================
+		if (c.gameObject.tag == "Spikes")
+		{
+			transform.position = startPosition;
+			playerDied = true;
+			GameEventManager.TriggerGameOver ();
+		}
 	}
-	
+
 	void OnCollisionExit2D(Collision2D c) {
 		if (c.gameObject.tag == "MovingPlatform") {
 			movingOnPlatform = false;
@@ -61,10 +70,9 @@ public class characterController : MonoBehaviour {
 		rigidbody2D.isKinematic = false;
 		enabled = true;
 	}
-	
-	public static void AddBacon () {
-		bacon += 1;
-		GUIManager.SetBacon(bacon);
+
+	private void Restart () {
+		GameEventManager.TriggerGameStart();
 	}
 	
 	private void GameOver () {
@@ -72,6 +80,11 @@ public class characterController : MonoBehaviour {
 		renderer.enabled = false;
 		rigidbody2D.isKinematic = true;
 		enabled = false;
+	}
+	
+	public static void AddBacon () {
+		bacon += 1;
+		GUIManager.SetBacon(bacon);
 	}
 	
 	void FixedUpdate () {
@@ -104,15 +117,13 @@ public class characterController : MonoBehaviour {
 		if (transform.position.y <= gameOverY) {
 			transform.position = startPosition;
 			playerDied = true;
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerRestart();
 		}
 	}
 	
 	void Update () {
 		move = Input.GetAxis ("Horizontal");				// for use in run animation
-
 		characterPositionY = transform.position.y;			// used for vertical camera tracking
-
 		// ======================================
 		// MOVING THE CHARACTER
 		// ======================================
@@ -125,7 +136,6 @@ public class characterController : MonoBehaviour {
 			                          * Time.fixedDeltaTime);
 		else
 			rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
-
 		// ======================================
 		// JUMPING AND TRAMPOLINE
 		// ======================================
@@ -149,16 +159,15 @@ public class characterController : MonoBehaviour {
 			rigidbody2D.velocity = Vector2.zero;
 			transform.position = startPosition;
 			playerDied = true;
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerRestart();
 		}
 		// ======================================
 		// VERTICAL BAR FLIP
 		// ======================================
-	}
+	}	
 	// ======================================
 	// PLAYER SPRITE FLIPS
 	// ======================================
-
 	void Flip(){
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
