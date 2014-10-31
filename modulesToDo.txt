@@ -4,6 +4,24 @@ texture for trampoline
 texture for level
 texture for BG
 Bring 30kr to Eleftherios
+change gameOverY = -4.0f to invisible spikes
+Press [P] for 'Pause'
+	In the pause menu you have the following options:
+	-Resume
+	-Restart level
+	-Save game (Save your progress <levels>)
+	+Options
+	+Quit to main menu
+	-Quit (Are you sure you want to quit?)
+Main menu
+	-Start new game
+	-Load game
+	+Options
+	-Quit (Are you sure you want to quit?)
+Options
+	-SFX volume
+	-Music volume
+	-Reset to recommended volume
 
 Character
 	Jumping (+Coding / animation)
@@ -27,7 +45,7 @@ Level
 
 	Level features
 		time limit and faster music (coding)
-		screen scroll (+coding / texture and/or animation)
+		+screen scroll (coding / texture and/or animation)
 		wind current (allows larger/shorter jump) (coding)
 
 	Foreground Audience

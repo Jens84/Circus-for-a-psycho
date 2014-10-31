@@ -17,7 +17,7 @@ public class characterController : MonoBehaviour {
 	public static float characterPositionY = 1.1f;	// used for vertical camera tracking
 	public float maxSpeed = 10f;
 	public float jumpForce = 700f;
-	public float gameOverY = -4.0f;
+	public float gameOverY = -13.0f;
 	public LayerMask whatIsGround;					// defines which objects count as ground
 	public LayerMask whatIsTrampoline;				// defines which objects count as trampolines
 	public Transform groundCheck;
