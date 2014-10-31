@@ -131,7 +131,6 @@ public class characterController : MonoBehaviour {
 		// ======================================
 		if (trampoline) {									// player will trampoline if on top of trampoline
 			anim.SetBool ("Ground", false);
-			rigidbody2D.velocity = new Vector2(0f,20f);
 			//playerJumped = true;							// activate to use in vertical platforms
 			//playerJumped2 = true;							// activate to use in vertical platforms
 		}

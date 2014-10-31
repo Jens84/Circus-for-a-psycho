@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class trampolineScript : MonoBehaviour {
-	void Update () 
+
+	void OnCollision2D (Collision2D other)
 	{
-		if (characterController.trampoline && !audio.isPlaying)
+		if ((other.gameObject.tag == "Player" || characterController.trampoline) && !audio.isPlaying)
 		{
 			audio.Play();
-			characterController.trampoline = false;
+			other.gameObject.rigidbody2D.velocity = new Vector2(0f,20f);
 		}
 	}
 }
