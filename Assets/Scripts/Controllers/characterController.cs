@@ -56,7 +56,7 @@ public class characterController : MonoBehaviour {
 		// Connect to the GameEventManager
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
-		startPosition = new Vector3(-6.0f,1.1f, -2.0f);
+		startPosition = new Vector3(-6.0f, 1.1f, -2.0f);
 		renderer.enabled = false;					// Disable the character before game starts
 		rigidbody2D.isKinematic = true;				// Used for GameStart and GameOver
 		enabled = false;
@@ -72,6 +72,7 @@ public class characterController : MonoBehaviour {
 	}
 
 	private void Restart () {
+		GameEventManager.TriggerGameOver();
 		GameEventManager.TriggerGameStart();
 	}
 	
@@ -155,7 +156,7 @@ public class characterController : MonoBehaviour {
 		// ======================================
 		// CAMERA CATCHES UP TO PLAYER
 		// ======================================
-		if (transform.position.x < (cameraControl.cameraPositionX-13)){ // kills player if he lags behind
+		if (transform.position.x < (cameraControl.cameraPositionX-11.5)){ // kills player if he lags behind
 			rigidbody2D.velocity = Vector2.zero;
 			transform.position = startPosition;
 			playerDied = true;

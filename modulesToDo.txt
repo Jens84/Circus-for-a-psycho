@@ -3,7 +3,7 @@ Modules
 texture for trampoline
 texture for level
 texture for BG
-
+Bring 30kr to Eleftherios
 
 Character
 	Jumping (+Coding / animation)
@@ -38,7 +38,7 @@ NPCs
 	Bosses (texture / coding / animation)
 
 Items
-	+sparkling bacon give plus score, but minus time (texture / coding)
+	+sparkling bacon give more time (texture / coding)
 	collectible power ups to throw knives (texture / coding)
 	maybe a ninja rope (texture / coding)
 	pickup Hay(bacon) to lure the giraf
