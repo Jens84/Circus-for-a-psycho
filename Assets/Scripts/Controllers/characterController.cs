@@ -144,7 +144,7 @@ public class characterController : MonoBehaviour {
 			//playerJumped = true;							// activate to use in vertical platforms
 			//playerJumped2 = true;							// activate to use in vertical platforms
 		}
-		else if (grounded && Input.GetButtonDown("Jump")) {	// player can jump if grounded
+		else if (grounded && Input.GetButtonDown("Jump") && !trampoline) {	// player can jump if grounded
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 			playerJumped = true;							// used for vertical platforms
