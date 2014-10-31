@@ -7,6 +7,7 @@ public class Bacon : MonoBehaviour {
 	public Vector3 rotationVelocity = new Vector3(45, 100, 1);
 	public float recycleOffset = 20.0f;
 	public float spawnChance = 25.0f;
+	public GameObject baconCollected;
 
 	void Start () {
 		GameEventManager.GameOver += GameOver;
@@ -21,6 +22,8 @@ public class Bacon : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other){
+		Instantiate (baconCollected, transform.position, transform.rotation);
+
 		characterController.AddBacon();
 		gameObject.SetActive(false);
 	}
