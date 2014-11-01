@@ -11,9 +11,6 @@ public class characterController : MonoBehaviour {
 	public static bool trampoline = false;			// is the player on a trampoline
 	public static bool playerDied = false;			// used to reset the camera position	 
 	public static bool playerJumped = false;
-	public static bool playerJumped2 = false;
-	public static bool playerJumped3 = false;
-	public static bool playerJumped4 = false;
 	public static float characterPositionY = 1.1f;	// used for vertical camera tracking
 	public float maxSpeed = 10f;
 	public float jumpForce = 700f;
@@ -142,16 +139,11 @@ public class characterController : MonoBehaviour {
 		// ======================================
 		if (trampoline) {									// player will trampoline if on top of trampoline
 			anim.SetBool ("Ground", false);
-			//playerJumped = true;							// activate to use in vertical platforms
-			//playerJumped2 = true;							// activate to use in vertical platforms
 		}
 		else if (grounded && Input.GetButtonDown("Jump") && !trampoline) {	// player can jump if grounded
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 			playerJumped = true;							// used for vertical platforms
-			playerJumped2 = true;							// used for vertical platforms
-			playerJumped3 = true;							// used for horizontal platforms
-			playerJumped4 = true;							// used for horizontal platforms
 		}
 		// ======================================
 		// CAMERA CATCHES UP TO PLAYER
