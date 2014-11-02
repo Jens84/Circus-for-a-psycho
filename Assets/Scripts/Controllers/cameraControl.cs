@@ -46,4 +46,9 @@ public class cameraControl : MonoBehaviour {
 			characterController.playerDied = false;
 		}
 	}
+
+	void OnDestroy() {
+		GameEventManager.GameStart -= GameStart;
+		GameEventManager.GameOver -= GameOver;
+	}
 }

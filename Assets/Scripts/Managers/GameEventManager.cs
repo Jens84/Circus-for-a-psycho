@@ -4,7 +4,7 @@ public static class GameEventManager {
 	
 	public delegate void GameEvent();
 	public static event GameEvent GameStart, GameOver, Restart;
-	
+
 	/* Care should be taken to only call an event if anyone is subscribed to it, 
 	 * otherwise it will be null and the call will result in an error. */
 	public static void TriggerGameStart(){
@@ -18,7 +18,7 @@ public static class GameEventManager {
 			Restart();
 		}
 	}
-	
+
 	public static void TriggerGameOver(){
 		if(GameOver != null){
 			GameOver();

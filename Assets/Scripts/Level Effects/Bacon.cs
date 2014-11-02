@@ -32,4 +32,9 @@ public class Bacon : MonoBehaviour {
 		characterController.AddBacon();
 		gameObject.SetActive(false);
 	}
+
+	void OnDestroy() {
+		GameEventManager.GameStart -= GameStart;
+		GameEventManager.GameOver -= GameOver;
+	}
 }

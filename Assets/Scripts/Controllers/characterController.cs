@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class characterController : MonoBehaviour {
+public class characterController : MonoBehaviour {	
 
 	Animator anim;
 	bool grounded = false;							// is the player on the ground
@@ -24,6 +24,7 @@ public class characterController : MonoBehaviour {
 	private float move;
 	private MovingPlatform currentMovingPlatform;	// the moving platform the player is on
 	private Vector3 startPosition;
+
 
 	void OnCollisionEnter2D(Collision2D c) {
 		if (c.gameObject.tag == "MovingPlatform" && grounded) {
@@ -166,5 +167,10 @@ public class characterController : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	void OnDestroy() {
+		GameEventManager.GameStart -= GameStart;
+		GameEventManager.GameOver -= GameOver;
 	}
 }
