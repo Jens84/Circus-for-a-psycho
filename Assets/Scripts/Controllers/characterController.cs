@@ -54,6 +54,7 @@ public class characterController : MonoBehaviour {
 		// Connect to the GameEventManager
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
+		GameEventManager.Restart += Restart;
 		startPosition = new Vector3(-6.0f, 1.1f, -2.0f);
 		renderer.enabled = false;					// Disable the character before game starts
 		rigidbody2D.isKinematic = true;				// Used for GameStart and GameOver
