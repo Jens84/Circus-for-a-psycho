@@ -1,13 +1,16 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
 {	
-	private int buttonWidth = 200;
+	public GUIStyle customGuiStyle, customToggleOnGuiStyle, customToggleSwapGuiStyle, customPanelGuiStyle, customPauseGuiStyle;
+
+	private int buttonWidth = 220;
 	private int buttonHeight = 50;
-	private int groupWidth = 200;
-	private int groupHeight = 170;
-	bool paused = false;	
+	private int groupWidth = 500;
+	private int groupHeight = 400;
+	private bool paused = false;	
+	private bool muteToggle = false;
 
 	void Start()
 	{
@@ -30,20 +33,33 @@ public class Pause : MonoBehaviour
 	{
 		if (paused) 
 		{
-			GUI.BeginGroup(new Rect(((Screen.width/2) - (groupWidth/2)), ((Screen.height/2) - (groupHeight/2)), groupWidth, groupHeight));
-         	if(GUI.Button(new Rect(0, 0, buttonWidth, buttonHeight), "Main Menu"))
+			GUI.BeginGroup(new Rect(((Screen.width/2) - (groupWidth/2)), ((Screen.height/2) - (groupHeight/2)), groupWidth, groupHeight), customPanelGuiStyle);
+			GUI.TextArea(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.2f), buttonWidth, buttonHeight), "Pause", customPauseGuiStyle);
+			if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.5f), buttonWidth, buttonHeight), "Main Menu", customGuiStyle))
          	{
 				Application.LoadLevel(0);
 			}
-			if(GUI.Button(new Rect(0, 60, buttonWidth, buttonHeight), "Restart Game"))
+			if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.6f), buttonWidth, buttonHeight), "Restart Game", customGuiStyle))
 			{
 				Application.LoadLevel(1);
 			}
-			if(GUI.Button(new Rect(0, 120, buttonWidth, buttonHeight), "Quit Game"))
+			if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.7f), buttonWidth, buttonHeight), "Quit Game", customGuiStyle))
 			{
 				Application.Quit();
 			}
+			muteToggle = GUI.Toggle(new Rect((groupWidth* 0.8f) , (groupHeight* 0.8f), 100, 100), muteToggle, "Mute", customToggleSwapGuiStyle);
 			GUI.EndGroup();
+
+			if (!muteToggle)
+			{// If false
+				AudioListener.volume = 1;
+				customToggleSwapGuiStyle = customGuiStyle;
+			}
+			else
+			{
+				AudioListener.volume = 0;
+				customToggleSwapGuiStyle = customToggleOnGuiStyle;
+			}
 		}
 	}
 

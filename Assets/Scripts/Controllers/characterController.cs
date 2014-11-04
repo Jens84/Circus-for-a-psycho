@@ -44,7 +44,7 @@ public class characterController : MonoBehaviour {
 		{
 			transform.position = startPosition;
 			playerDied = true;
-			GameEventManager.TriggerGameOver ();
+			GameEventManager.TriggerRestart ();
 		}
 	}
 
@@ -148,7 +148,7 @@ public class characterController : MonoBehaviour {
 		if (trampoline) {									// player will trampoline if on top of trampoline
 			anim.SetBool ("Ground", false);
 		}
-		else if (grounded && Input.GetButtonDown("Jump") && !trampoline) {	// player can jump if grounded
+		else if (grounded && (Input.GetButtonDown("Jump") || Input.GetButtonDown("Up")) && !trampoline) {	// player can jump if grounded
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 			playerJumped = true;							// used for vertical platforms
