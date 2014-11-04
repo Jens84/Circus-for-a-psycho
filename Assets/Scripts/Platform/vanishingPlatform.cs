@@ -16,7 +16,9 @@ public class vanishingPlatform : MonoBehaviour {
 
 	private void Restart () {
 		isBlinking = false;
-		gameObject.SetActive (true);
+		if (gameObject != null) {
+			gameObject.SetActive (true);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D c) {
