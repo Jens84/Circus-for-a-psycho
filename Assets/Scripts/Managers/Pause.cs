@@ -11,14 +11,19 @@ public class Pause : MonoBehaviour
 
 	void Start()
 	{
-		Screen.lockCursor = false;
 		Time.timeScale = 1;
 	}
 
 	void Update()
 	{
-		if(Input.GetKeyUp(KeyCode.Escape))
-			paused = togglePause();
+		if (Input.GetKeyUp (KeyCode.Escape)) 
+		{
+			if (Screen.lockCursor)
+				Screen.lockCursor = false;
+			else
+				Screen.lockCursor = true;
+			paused = togglePause ();
+		}
 	}
 
 	void OnGUI()
