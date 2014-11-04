@@ -18,9 +18,15 @@ public class characterController : MonoBehaviour {
 	public LayerMask whatIsGround;					// defines which objects count as ground
 	public LayerMask whatIsTrampoline;				// defines which objects count as trampolines
 	public Transform groundCheck;
+	public float fireRate;
+	public GameObject knife;
+	public Transform knifeSpawn;
 
+	[HideInInspector]
+	public bool facingRight = true;				// used to flip the player sprite
+
+	private float nextFire;
 	private static int bacon;
-	private bool facingRight = true;				// used to flip the player sprite
 	private float move;
 	private MovingPlatform currentMovingPlatform;	// the moving platform the player is on
 	private Vector3 startPosition;
