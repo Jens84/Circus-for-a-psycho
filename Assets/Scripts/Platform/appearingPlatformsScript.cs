@@ -30,7 +30,6 @@ public class appearingPlatformScript : MonoBehaviour {
 		horizontalBar4 = GameObject.FindWithTag("horizontalBar4");
 		horizontalBar5 = GameObject.FindWithTag("horizontalBar5");
 		horizontalBar6 = GameObject.FindWithTag("horizontalBar6");
-
 	}
 	
 	void Update () {
