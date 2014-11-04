@@ -47,6 +47,8 @@ Level
 		time limit and faster music (coding)
 		+screen scroll (coding / texture and/or animation)
 		wind current (allows larger/shorter jump) (coding)
+		Wheel of Death
+		Fire circle
 
 	Foreground Audience
 		cheering audience if player is awesome (texture / coding)
@@ -73,7 +75,8 @@ GUI
 	GUI text to have shadows?
 Bugfixing
 	character movement on moving platform
-	trampoline sound
+	trampoline sound (fixed?)
+	chasing fire on build
 
 -Music/Sound
 	BGM

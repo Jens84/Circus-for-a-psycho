@@ -11,7 +11,6 @@ public class Pause : MonoBehaviour
 
 	void Start()
 	{
-		Screen.lockCursor = false;
 		Time.timeScale = 1;
 	}
 
@@ -19,7 +18,10 @@ public class Pause : MonoBehaviour
 	{
 		if (Input.GetKeyUp (KeyCode.Escape)) 
 		{
-			Screen.lockCursor = false;
+			if (Screen.lockCursor)
+				Screen.lockCursor = false;
+			else
+				Screen.lockCursor = true;
 			paused = togglePause ();
 		}
 	}
