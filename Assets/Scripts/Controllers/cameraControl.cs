@@ -22,11 +22,8 @@ public class cameraControl : MonoBehaviour {
 		enabled = false;
 	}
 
-	void FixedUpdate(){
-		// ======================================
-		// TRACKING PLAYER VERTICALLY
-		// ======================================
-		Vector3 targetPosition = new Vector3 (transform.position.x,
+	void Update(){
+		Vector3 targetPosition = new Vector3 (characterController.characterPositionX,
 		                                      (characterController.characterPositionY - 0.5f), transform.position.z);
 		// ======================================
 		// HORIZONTAL CAMERA
@@ -36,9 +33,6 @@ public class cameraControl : MonoBehaviour {
 		// VERTICAL CAMERA TRACKING
 		// ======================================
 		transform.position = Vector3.Lerp (transform.position, targetPosition, Time.deltaTime * speedVertical);
-	}
-
-	void Update(){
 		cameraPositionX = transform.position.x;		// used to kill player that lags behind
 
 		if (characterController.playerDied) {		// reset camera position upon player death
