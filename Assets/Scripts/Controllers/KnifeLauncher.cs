@@ -5,10 +5,9 @@ public class KnifeLauncher : MonoBehaviour
 {
 	public Rigidbody2D knife;				// Prefab of the rocket.
 	public float speed = 20f;				// The speed the rocket will fire at.
-	
+	Animator anim;
 	
 	private characterController playerCtrl;		// Reference to the PlayerControl script.
-	private Animator anim;					// Reference to the Animator component.
 	
 	
 	void Awake()
@@ -22,7 +21,7 @@ public class KnifeLauncher : MonoBehaviour
 	void Update ()
 	{
 		// If the fire button is pressed...
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Action"))
 		{
 			// ... set the animator Shoot trigger parameter and play the audioclip.
 			//anim.SetTrigger("Shoot");

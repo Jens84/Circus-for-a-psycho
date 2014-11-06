@@ -22,6 +22,7 @@ public class characterController : MonoBehaviour {
 	public float fireRate;
 	public GameObject knife;
 	public Transform knifeSpawn;
+	public static Vector3 startPosition;
 
 	[HideInInspector]
 	public bool facingRight = true;				// used to flip the player sprite
@@ -30,7 +31,6 @@ public class characterController : MonoBehaviour {
 	private static int bacon;
 	private float move;
 	private MovingPlatform currentMovingPlatform;	// the moving platform the player is on
-	private Vector3 startPosition;
 
 
 	void OnCollisionEnter2D(Collision2D c) {

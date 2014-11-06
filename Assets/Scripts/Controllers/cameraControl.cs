@@ -36,7 +36,7 @@ public class cameraControl : MonoBehaviour {
 		cameraPositionX = transform.position.x;		// used to kill player that lags behind
 
 		if (characterController.playerDied) {		// reset camera position upon player death
-			transform.position = new Vector3 (-6.0f, 1.6f, -8.0f);
+			transform.position = new Vector3 (characterController.startPosition.x, characterController.startPosition.y, -8.0f);
 			characterController.playerDied = false;
 		}
 	}

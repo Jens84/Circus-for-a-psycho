@@ -3,7 +3,7 @@ using System.Collections;
 
 public class baconCollected : MonoBehaviour {
 
-	void Start () {
-		Destroy (gameObject, 1);
+	void Awake () {
+		Destroy (gameObject, 1.0f);
 	}
 }
