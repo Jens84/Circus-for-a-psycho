@@ -23,12 +23,12 @@ public class characterController : MonoBehaviour {
 	public GameObject knife;
 	public Transform knifeSpawn;
 	public static Vector3 startPosition;
+	public static int bacon;
 
 	[HideInInspector]
 	public bool facingRight = true;				// used to flip the player sprite
 
 	private float nextFire;
-	private static int bacon;
 	private float move;
 	private MovingPlatform currentMovingPlatform;	// the moving platform the player is on
 
@@ -69,7 +69,12 @@ public class characterController : MonoBehaviour {
 	}
 
 	private void GameStart () {
-		bacon = 0;
+		if (!checkPoint.checkPointReached) {
+			bacon = 0;
+		}
+		else {
+			bacon = checkPoint.rememberBacon;
+		}
 		GUIManager.SetBacon(bacon);
 		transform.localPosition = startPosition;
 		renderer.enabled = true;

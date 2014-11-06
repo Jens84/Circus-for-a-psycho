@@ -15,7 +15,7 @@ public class Bacon : MonoBehaviour {
 	}
 	
 	private void GameStart () {
-		gameObject.SetActive(true);
+		gameObject.SetActive (true);
 	}
 
 	private void GameOver () {
@@ -30,7 +30,7 @@ public class Bacon : MonoBehaviour {
 		Instantiate (baconCollected, transform.position, transform.rotation);
 
 		characterController.AddBacon();
-		gameObject.SetActive(false);
+		gameObject.SetActive (false);
 	}
 
 	void OnDestroy() {
