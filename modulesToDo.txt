@@ -1,33 +1,25 @@
 Modules
 
-texture for level
-texture for BG
+destroying collected bacon, if collected when check point is reached.
+texture for circus-level
+texture for clouds for level one
+sound for check point, knife, jump, run, death and new life.
 Bring 30kr to Eleftherios
 
 Press [P] for 'Pause'
-	In the pause menu you have the following options:
-	-Resume
-	-Restart level
-	-Save game (Save your progress <levels>)
-	+Options
-	+Quit to main menu
-	-Quit (Are you sure you want to quit?)
-Main menu
-	-Start new game
-	-Load game
-	+Options
-	-Quit (Are you sure you want to quit?)
-Options
-	-SFX volume
-	-Music volume
-	-Reset to recommended volume
+	Pause menu
+	Resume Game
+	Restart Game
+	Quit to main menu
+	Quit
+
 
 Character
-	+Jumping (Coding / animation)
-	+Running (Coding / animation)
-	+Collect stuff (Coding)
-	Throw knives (Coding / animation)
-	(Reflective shield (Coding / animation))
+	Jumping
+	Running
+	Collect stuff
+	Throw knives
+	-(Reflective shield (Coding / animation))
 
 Level
 	Background 2D drawings "landscapes" (texture)
@@ -36,16 +28,16 @@ Level
 			swinging guys in ropes (texture / coding)
 
 	Midground
-		Bouncy platform (texture / +coding)
-		Crumbling platform (texture / coding)
-		Moving platform (texture / +coding)
-		+Vertical platform (texture / coding)
-		Random platform (texture / coding)
+		Trampoline
+		Vanishing platform
+		Moving platform
+		Jump activated platforms
+		-Random platform (texture / coding)
 
 	Level features
-		time limit and faster music (coding)
-		+screen scroll (coding / texture and/or animation)
-		wind current (allows larger/shorter jump) (coding)
+		-time limit and faster music (coding)
+		Screen scroll
+		-wind current (allows larger/shorter jump) (coding)
 
 	Foreground Audience
 		cheering audience if player is awesome (texture / coding)
@@ -55,11 +47,11 @@ NPCs
 	Bosses (texture / coding / animation)
 
 Items
-	+sparkling bacon give more time (texture / coding)
-	collectible power ups to throw knives (texture / coding)
-	maybe a ninja rope (texture / coding)
-	pickup Hay(bacon) to lure the giraf
-	pickup beef to passify the lion
+	sparkling bacon give more time (texture / coding)
+	-collectible power ups to throw knives (texture / coding)
+	-maybe a ninja rope (texture / coding)
+	-pickup Hay(bacon) to lure the giraf
+	-pickup beef to passify the lion
 
 GUI
 	time
@@ -72,8 +64,8 @@ GUI
 	GUI text to have shadows?
 Bugfixing
 	character movement on moving platform
-	trampoline sound
+	trampoline animation - they all go at once
 
 -Music/Sound
 	BGM
-	SFX for character jump, run, fall, knives
+	SFX
