@@ -136,7 +136,7 @@ public class characterController : MonoBehaviour {
 	void Update () {
 		move = Input.GetAxis ("Horizontal");				// for use in run animation
 		characterPositionY = transform.position.y;			// used for vertical camera tracking
-		characterPositionX = transform.position.x;	// used for horizontal camera tracking
+		characterPositionX = transform.position.x;			// used for horizontal camera tracking
 		// ======================================
 		// MOVING THE CHARACTER
 		// ======================================
