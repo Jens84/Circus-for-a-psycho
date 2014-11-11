@@ -4,6 +4,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - jumpSound: {fileID: 8300000, guid: 7468ac6372b8cd04c88681f20d12655a, type: 3}
+  - deathSound: {fileID: 8300000, guid: c270d88538d381f4187c7c73a9458e9d, type: 3}
+  - reviveSound: {fileID: 8300000, guid: 5700fd5bf560eea4c8a7b861b8af5fc7, type: 3}
   - groundCheck: {instanceID: 0}
   - knife: {fileID: 100000, guid: 372fed59335dfee4993dfa9cbf19e73f, type: 2}
   - knifeSpawn: {instanceID: 0}

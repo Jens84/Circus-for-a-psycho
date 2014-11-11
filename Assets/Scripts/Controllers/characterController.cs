@@ -8,6 +8,7 @@ public class characterController : MonoBehaviour {
 	bool movingOnPlatform = false;					// is the player on a moving platform
 	float groundRadius = 0.2f;						// used in conjunction with groundCheck
 	public AudioClip jumpSound;
+	public AudioClip DeathAndReviveSound;
 
 	public static bool trampoline = false;			// is the player on a trampoline	 
 	public static bool playerJumped = false;
@@ -87,7 +88,7 @@ public class characterController : MonoBehaviour {
 	}
 	
 	private void GameOver () {
-		//Application.LoadLevel (0);
+		audio.PlayOneShot(DeathAndReviveSound);
 		renderer.enabled = false;
 		rigidbody2D.isKinematic = true;
 		enabled = false;
