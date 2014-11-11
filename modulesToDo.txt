@@ -5,12 +5,12 @@ Level 2 Free the animals!
 Level 3 Escape the circus!
 texture for circus-level
 texture for clouds for level one
-sound for check point, knife, run, death and respawn.
+sound for knife, run, death and respawn.
 make enemies (lion, giraf, (circus director))
 	texture, coding movement, audio
 balloon for level 1
 pickup Hay(from haystack) to lure the giraf
-objectives splash on screen at start
+
 
 NPCs
 	Animals, riding animals (texture / coding / animation)
@@ -43,6 +43,10 @@ Bugfixing
 
 
 MODULES COMPLETE:
+
+objectives splash on screen at start
+sound for
+	checkpoint
 
 Menu
 	Pause menu
