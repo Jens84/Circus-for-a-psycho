@@ -1,28 +1,62 @@
-Modules
+Modules TO DO:
 
-Level 3
-Level 2
+Level 1 Collect the bacon!
+Level 2 Free the animals!
+Level 3 Escape the circus!
 texture for circus-level
 texture for clouds for level one
 sound for check point, knife, run, death and respawn.
-make enemies (lion, giraf, circus director)
+make enemies (lion, giraf, (circus director))
 	texture, coding movement, audio
 balloon for level 1
+pickup Hay(from haystack) to lure the giraf
+objectives splash on screen at start
 
-Press [P] for 'Pause'
+NPCs
+	Animals, riding animals (texture / coding / animation)
+	Lure a giraf to get to a higher platform (texture / coding / animation)
+	Bosses (texture / coding / animation)
+
+EXTRA:
+	(Reflective shield (Coding / animation))
+	Random platform (texture / coding)
+	time limit and faster music (coding)
+	wind current (allows larger/shorter jump) (coding)
+	Foreground Audience
+		cheering audience if player is awesome (texture / coding)
+	collectible power ups to throw knives (texture / coding)
+	maybe a ninja rope (texture / coding)
+	pickup beef to passify the lion
+	time
+	items
+	lives
+	score
+	in-game pop-up messages
+		ex. Hurry up! or... Collect the Bacon!
+
+
+Bugfixing
+	character movement on moving platform
+	trampoline animation - they all go at once
+	trampoline super jump
+	destroying collected bacon, if collected when check point is reached.
+
+
+MODULES COMPLETE:
+
+Menu
 	Pause menu
 	Resume Game
 	Restart Game
 	Quit to main menu
 	Quit
 
-
 Character
 	Jumping
 	Running
 	Collect stuff
 	Throw knives
-	-(Reflective shield (Coding / animation))
+	-
 
 Level
 	Background 2D drawings "landscapes" (texture)
@@ -35,41 +69,16 @@ Level
 		Vanishing platform
 		Moving platform
 		Jump activated platforms
-		-Random platform (texture / coding)
-
+		
 	Level features
-		-time limit and faster music (coding)
 		Screen scroll
-		-wind current (allows larger/shorter jump) (coding)
-
-	Foreground Audience
-		cheering audience if player is awesome (texture / coding)
-NPCs
-	Animals, riding animals (texture / coding / animation)
-	Lure a giraf to get to a higher platform (texture / coding / animation)
-	Bosses (texture / coding / animation)
 
 Items
 	sparkling bacon give more time (texture / coding)
-	-collectible power ups to throw knives (texture / coding)
-	-maybe a ninja rope (texture / coding)
-	-pickup Hay(bacon) to lure the giraf
-	-pickup beef to passify the lion
 
 GUI
-	time
-	items
-	lives
-	score
-	objectives splash on screen at start
-	in-game pop-up messages
-		ex. Hurry up! or... Collect the Bacon!
 	GUI text to have shadows?
-Bugfixing
-	character movement on moving platform
-	trampoline animation - they all go at once
-	trampoline super jump
-	destroying collected bacon, if collected when check point is reached.
+
 -Music/Sound
 	BGM
 	SFX
