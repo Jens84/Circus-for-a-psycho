@@ -1,10 +1,13 @@
 Modules
 
-destroying collected bacon, if collected when check point is reached.
+Level 3
+Level 2
 texture for circus-level
 texture for clouds for level one
-sound for check point, knife, jump, run, death and new life.
-Bring 30kr to Eleftherios
+sound for check point, knife, run, death and respawn.
+make enemies (lion, giraf, circus director)
+	texture, coding movement, audio
+balloon for level 1
 
 Press [P] for 'Pause'
 	Pause menu
@@ -65,7 +68,8 @@ GUI
 Bugfixing
 	character movement on moving platform
 	trampoline animation - they all go at once
-
+	trampoline super jump
+	destroying collected bacon, if collected when check point is reached.
 -Music/Sound
 	BGM
 	SFX

@@ -22,6 +22,10 @@ public class cameraControl : MonoBehaviour {
 		enabled = false;
 	}
 
+	private void Restart () {		// reset camera position upon player death
+		transform.position = new Vector3 (characterController.startPosition.x, characterController.startPosition.y, -8.0f);
+	}
+
 	void Update(){
 		Vector3 targetPosition = new Vector3 (characterController.characterPositionX,
 		                                      (characterController.characterPositionY - 0.5f), transform.position.z);
@@ -35,10 +39,7 @@ public class cameraControl : MonoBehaviour {
 		transform.position = Vector3.Lerp (transform.position, targetPosition, Time.deltaTime * speedVertical);
 		cameraPositionX = transform.position.x;		// used to kill player that lags behind
 
-		if (characterController.playerDied) {		// reset camera position upon player death
-			transform.position = new Vector3 (characterController.startPosition.x, characterController.startPosition.y, -8.0f);
-			characterController.playerDied = false;
-		}
+
 	}
 
 	void OnDestroy() {

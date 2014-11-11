@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 8c7edc3e6aca37846a9653a2aa99bc91
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - jumpSound: {fileID: 8300000, guid: 7468ac6372b8cd04c88681f20d12655a, type: 3}
+  - groundCheck: {instanceID: 0}
+  - knife: {fileID: 100000, guid: 372fed59335dfee4993dfa9cbf19e73f, type: 2}
+  - knifeSpawn: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

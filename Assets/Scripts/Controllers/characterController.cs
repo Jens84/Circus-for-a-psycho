@@ -7,9 +7,9 @@ public class characterController : MonoBehaviour {
 	bool grounded = false;							// is the player on the ground
 	bool movingOnPlatform = false;					// is the player on a moving platform
 	float groundRadius = 0.2f;						// used in conjunction with groundCheck
+	public AudioClip jumpSound;
 
-	public static bool trampoline = false;			// is the player on a trampoline
-	public static bool playerDied = false;			// used to reset the camera position	 
+	public static bool trampoline = false;			// is the player on a trampoline	 
 	public static bool playerJumped = false;
 	public static float characterPositionY = 1.1f;	// used for vertical camera tracking
 	public static float characterPositionX = 0.0f;	// used for horizontal camera tracking
@@ -44,7 +44,6 @@ public class characterController : MonoBehaviour {
 		if (c.gameObject.tag == "Spikes")
 		{
 			transform.position = startPosition;
-			playerDied = true;
 			GameEventManager.TriggerRestart ();
 		}
 	}
@@ -128,7 +127,6 @@ public class characterController : MonoBehaviour {
 		// ======================================
 		if (transform.position.y <= gameOverY) {
 			transform.position = startPosition;
-			playerDied = true;
 			GameEventManager.TriggerRestart();
 		}
 	}
@@ -158,6 +156,9 @@ public class characterController : MonoBehaviour {
 		else if (grounded && Input.GetButtonDown("Jump") && !trampoline) {	// player can jump if grounded
 			anim.SetBool ("Ground", false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
+			if(!audio.isPlaying){
+				audio.PlayOneShot(jumpSound);
+			}
 			playerJumped = true;							// used for vertical platforms
 		}
 		// ======================================
@@ -166,7 +167,6 @@ public class characterController : MonoBehaviour {
 		if (transform.position.x < (cameraControl.cameraPositionX-11.5)){ // kills player if he lags behind
 			rigidbody2D.velocity = Vector2.zero;
 			transform.position = startPosition;
-			playerDied = true;
 			GameEventManager.TriggerRestart();
 		}
 		// ======================================
