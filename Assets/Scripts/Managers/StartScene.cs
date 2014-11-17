@@ -17,17 +17,22 @@ public class StartScene : MonoBehaviour
 		audio.Play ();
 	}
 
+    public void Update()
+    {
+        GameManager.Instance.Reset(); // to reset the points
+    }
+
 	void OnGUI()
 	{
 		GUI.BeginGroup(new Rect(((Screen.width/2) - (groupWidth/2)), ((Screen.height/2) - (groupHeight/2)), groupWidth, groupHeight), customPanelGuiStyle);
 		GUI.Button(new Rect(groupWidth/2 - 250, 100, 500, 100), "Circus", customTitleGuiStyle);
 		GUI.Button(new Rect(groupWidth/2 - 300, 220, 600, 80), "for a Psycho", customTitle2GuiStyle);
-		if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.6f), buttonWidth, buttonHeight), "Start", customGuiStyle))
+		if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.5f), buttonWidth, buttonHeight), "Start", customGuiStyle))
 		{
 			audio.Stop ();
-			Application.LoadLevel(1);
+            Application.LoadLevel(1);
 		}
-		if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.7f), buttonWidth, buttonHeight), "Quit", customGuiStyle))
+		if(GUI.Button(new Rect((groupWidth/2) - (buttonWidth/2), (groupHeight* 0.6f), buttonWidth, buttonHeight), "Quit", customGuiStyle))
 		{
 			Application.Quit();
 		}
