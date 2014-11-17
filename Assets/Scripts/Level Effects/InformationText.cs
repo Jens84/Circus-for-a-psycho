@@ -15,6 +15,8 @@ public class InformationText : MonoBehaviour
             AudioSource.PlayClipAtPoint(InfoSound, transform.position, 1f);
 
         LevelManager.Instance.DisplayInfoText(Text);
+
+        gameObject.SetActive(false);
     }
 }
 
