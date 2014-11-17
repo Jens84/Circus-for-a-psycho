@@ -36,9 +36,6 @@ public class LevelManager : MonoBehaviour
     {
         _savedPoints = GameManager.Instance.Points; // Points through levels
         Instance = this;
-        FloatingText.Show("Press A and D to move. Space or W to jump. Click to fire.",
-            "CheckpointText",
-            new CenteredTextPositioner(.05f));
     }
 
     public void Start()
@@ -121,7 +118,24 @@ public class LevelManager : MonoBehaviour
             Application.LoadLevel(0);
         else
             Application.LoadLevel(levelName);
+    }
 
+    public void DisplayInfoText(string[] Text)
+    {
+        StartCoroutine(DisplayInfoTextCo(Text));
+    }
+
+    private IEnumerator DisplayInfoTextCo(string[] text)
+    {
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            FloatingText.Show(text[i],
+                "InformationText",
+                new CenteredTextPositioner(.1f));
+
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public void KillPlayer()

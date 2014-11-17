@@ -9,7 +9,7 @@ public class JumpPlatform : MonoBehaviour
     public void ControllerEnter2D(CharacterController2D controller)
     {
         if (TrampolineSound != null)
-            AudioSource.PlayClipAtPoint(TrampolineSound, transform.position, 0.3f);
+            AudioSource.PlayClipAtPoint(TrampolineSound, transform.position, 1f);
 
         controller.SetVerticalForce(JumpMagnitude);
     }
