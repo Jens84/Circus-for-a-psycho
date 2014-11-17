@@ -17,7 +17,7 @@ public class ControllerParameters2D     // Used for global / rewritable variable
     [Range(0, 90)]                      // Slider for the Inspector
     public float SlopeLimit = 30;       // Limit for angles that we can climb
 
-    public float Gravity = -25f;        // Our global gravity
+    public float Gravity = -30f;        // Our global gravity
 
     public JumpBehaviour JumpRestrictions;
 
