@@ -1,14 +1,11 @@
 Modules TO DO:
 
-Level 1 Collect the bacon!
 Level 2 Free the animals!
 Level 3 Escape the circus!
 texture for circus-level
-texture for clouds for level one
 sound for run
 make enemies (lion, giraf, (circus director))
 	texture, coding movement, audio
-balloon for level 1
 pickup Hay(from haystack) to lure the giraf
 
 
@@ -18,6 +15,7 @@ NPCs
 	Bosses (texture / coding / animation)
 
 EXTRA:
+	POP THE BALLOONS!
 	(Reflective shield (Coding / animation))
 	Random platform (texture / coding)
 	time limit and faster music (coding)
@@ -36,14 +34,28 @@ EXTRA:
 
 
 Bugfixing
-	character movement on moving platform
-	trampoline animation - they all go at once
-	trampoline super jump
-	destroying collected bacon, if collected when check point is reached.
+	super jump on trampoline
+	Bacon sparkles to be reimplemented
+	running up slopes
 
 
 MODULES COMPLETE:
+/////////to merge manually:
+texture balloon, balloon burst, BG, cloud
+cloudCreator particalSystem
+balloon prefab
+balloon script
+balloon burst prefab
+balloon burst script
+knife script
 
+
+/////////
+giraf texture
+lion
+balloon for level 1
+texture for clouds for level one
+Level 1 Collect the bacon!
 objectives splash on screen at start
 sound for
 	checkpoint
