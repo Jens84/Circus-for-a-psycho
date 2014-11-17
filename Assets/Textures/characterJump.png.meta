@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: 77e734aec3a3f93449e508b6512dc14e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: characterJump_0
+    21300002: characterJump_1
+    21300004: characterJump_2
+    21300006: characterJump_3
+    21300008: characterJump_4
+    21300010: characterJump_5
+    21300012: characterJump_6
+    21300014: characterJump_7
+    21300016: characterJump_8
+    21300018: characterJump_9
+    21300020: characterJump_10
+    21300022: characterJump_11
+    21300024: characterJump_12
+    21300026: characterJump_13
+    21300028: characterJump_14
+    21300030: characterJump_15
+    21300032: characterJump_16
+    21300034: characterJump_17
+    21300036: characterJump_18
+    21300038: characterJump_19
+    21300040: characterJump_20
+    21300042: characterJump_21
+    21300044: characterJump_22
+    21300046: characterJump_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: characterJump_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_2
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_3
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_4
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_5
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_6
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_8
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_9
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_10
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_11
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_12
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_13
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_15
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_16
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_17
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_18
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_19
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_20
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 880
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_22
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 880
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: characterJump_23
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 880
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
