@@ -12,6 +12,7 @@ public class CharacterController2D : MonoBehaviour
 
     public LayerMask PlatformMask;
     public ControllerParameters2D DefaultParameters;
+    public ControllerParameters2D _overrideParameters;
     public static bool PlayerJumped;
 
     // Properties
@@ -41,7 +42,6 @@ public class CharacterController2D : MonoBehaviour
     private Transform _transform;
     private Vector3 _localScale;
     private BoxCollider2D _boxCollider;
-    private ControllerParameters2D _overrideParameters;
     private float _jumpIn;
     private GameObject _lastStandingOn;
 

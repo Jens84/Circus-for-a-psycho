@@ -87,6 +87,8 @@ public class Player : MonoBehaviour, ITakeDamage
         collider2D.enabled = true;
         Health = MaxHealth;
 
+        _controller._overrideParameters = _controller.DefaultParameters; 
+
         transform.position = spawnPoint.position;   // Spawn at spawnPoint which is specified
     }
 
