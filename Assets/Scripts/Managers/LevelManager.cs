@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
     public Checkpoint2D DebugSpawn;  // to spawn the player in different points while testing
     public int BonusCutoffSeconds;  // the max amount of seconds available the player has to get a bonus, till a checkpoint is reached, set for each level, any time after that the player won't receive a bonus
     public int BonusSecondMultiplier;   // how much bonus the player should receive (based on the time)
+    private int LvL = 1;
 
     public void Awake()                         // initialization
     {
@@ -121,11 +122,17 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.ResetBacon(0);
         GameManager.Instance.ResetBalloons(0);
 
-        if (GameManager.Instance.Points > 170)
+        int tmp = GameManager.Instance.Points;
+        if (LvL != 1)
+            tmp = tmp / 2;
+
+        if (tmp > 170)
         {
             FloatingText.Show("Well done! Great score!!!", "CheckpointText", new CenteredTextPositioner(.1f));
             yield return new WaitForSeconds(5f);
         }
+
+        LvL += 1;
 
         if (string.IsNullOrEmpty(levelName))
             Application.LoadLevel(0);

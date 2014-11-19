@@ -6,8 +6,6 @@ public class SimpleProjectile : Projectile, ITakeDamage
     public int Damage;
     public int PointsToGivePlayer; // If the player destroyes the projectile, will get some points
     public float TimeToLive;
-    public Quaternion ProjectileRotation;
-    public AudioClip DestroySound;
 
     public void Update()
     {
@@ -55,9 +53,6 @@ public class SimpleProjectile : Projectile, ITakeDamage
     {
         if (DestroyedEffect != null)
             Instantiate(DestroyedEffect, transform.position, transform.rotation);
-
-        if (DestroySound != null)
-            AudioSource.PlayClipAtPoint(DestroySound, transform.position, 0.3f);
 
         Destroy(gameObject);
     }
