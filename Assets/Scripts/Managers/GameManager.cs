@@ -6,6 +6,8 @@ public class GameManager
     public static GameManager Instance { get { return _instance ?? (_instance = new GameManager()); } } // return the _instance of the Game manager if not null, else instantiate a new one, through the private constructor
 
     public int Points { get; private set; }
+    public int Bacon { get; private set; }
+    public int Balloon { get; private set; }
 
     // Empty Constructor  + private, so that only the GameManager can instance it
     private GameManager()
@@ -22,8 +24,28 @@ public class GameManager
         Points = points;
     }
 
+    public void ResetBacon(int bacon)
+    {
+        Bacon = bacon;
+    }
+
+    public void ResetBalloons(int balloon)
+    {
+        Balloon = balloon;
+    }
+
     public void AddPoints(int pointsToAdd)
     {
         Points += pointsToAdd;
+    }
+
+    public void AddBacon(int baconToAdd)
+    {
+        Bacon += baconToAdd;
+    }
+
+    public void AddBalloon(int balloonToAdd)
+    {
+        Balloon += balloonToAdd;
     }
 }

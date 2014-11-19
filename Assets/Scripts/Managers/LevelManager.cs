@@ -26,7 +26,9 @@ public class LevelManager : MonoBehaviour
     private List<Checkpoint2D> _checkpoints;     // all the checkpoints in a list
     private int _currentCheckpointIndex;
     private DateTime _started;
-    private int _savedPoints;
+    private int
+        _savedPoints,
+        _savedBacon;
 
     public Checkpoint2D DebugSpawn;  // to spawn the player in different points while testing
     public int BonusCutoffSeconds;  // the max amount of seconds available the player has to get a bonus, till a checkpoint is reached, set for each level, any time after that the player won't receive a bonus
@@ -35,6 +37,7 @@ public class LevelManager : MonoBehaviour
     public void Awake()                         // initialization
     {
         _savedPoints = GameManager.Instance.Points; // Points through levels
+        _savedBacon = 0;
         Instance = this;
     }
 
@@ -95,6 +98,7 @@ public class LevelManager : MonoBehaviour
         // Get points based on checkpoints
         GameManager.Instance.AddPoints(CurrentTimeBonus);
         _savedPoints = GameManager.Instance.Points;
+        _savedBacon = GameManager.Instance.Bacon;
         _started = DateTime.UtcNow;
     }
 
@@ -113,6 +117,15 @@ public class LevelManager : MonoBehaviour
         // Show all points in end of level
         FloatingText.Show(string.Format("+{0} points!", GameManager.Instance.Points), "CheckpointText", new CenteredTextPositioner(.1f));
         yield return new WaitForSeconds(5f);
+
+        GameManager.Instance.ResetBacon(0);
+        GameManager.Instance.ResetBalloons(0);
+
+        if (GameManager.Instance.Points > 170)
+        {
+            FloatingText.Show("Well done! Great score!!!", "CheckpointText", new CenteredTextPositioner(.1f));
+            yield return new WaitForSeconds(5f);
+        }
 
         if (string.IsNullOrEmpty(levelName))
             Application.LoadLevel(0);
@@ -155,6 +168,7 @@ public class LevelManager : MonoBehaviour
             _checkpoints[_currentCheckpointIndex].SpawnPlayer(Player);
 
         _started = DateTime.UtcNow;
-        GameManager.Instance.ResetPoints(_savedPoints); // Reset points after respawn to the ones the player had before
+        GameManager.Instance.ResetBacon(_savedBacon);
+        GameManager.Instance.ResetPoints(_savedPoints); // Reset points after respawn to the ones the player had before dying
     }
 }

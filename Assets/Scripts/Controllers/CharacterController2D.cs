@@ -39,6 +39,7 @@ public class CharacterController2D : MonoBehaviour
 
     // Private fields
     private Vector2 _velocity;
+    private Vector2 _AvgVelocity;
     private Transform _transform;
     private Vector3 _localScale;
     private BoxCollider2D _boxCollider;
@@ -66,6 +67,7 @@ public class CharacterController2D : MonoBehaviour
         _transform = transform;
         _localScale = transform.localScale;
         _boxCollider = GetComponent<BoxCollider2D>();
+        _AvgVelocity.x = _AvgVelocity.y = .3f;
 
         var colliderWidth = _boxCollider.size.x * Mathf.Abs(transform.localScale.x) - (2 * SkinWidth);
         _horizontalDistanceBetweenRays = colliderWidth / (TotalVerticalRays - 1);
@@ -115,6 +117,12 @@ public class CharacterController2D : MonoBehaviour
         bool wasGrounded = State.IsCollidingBelow;
         State.Reset();
 
+        // Control for superjumps
+        if (deltaMovement.x > .5f || deltaMovement.y > .5f)
+        {
+            deltaMovement = _AvgVelocity;
+        }
+
         if (HandleCollisions)
         {
             HandlePlatforms();
@@ -148,7 +156,7 @@ public class CharacterController2D : MonoBehaviour
             _activeLocalPlatformPoint = StandingOn.transform.InverseTransformPoint(transform.position);
 
             // Used for sending messages to other platforms
-            #region a
+            #region Messages
             if (_lastStandingOn != StandingOn)
             {
                 if (_lastStandingOn != null)
@@ -165,7 +173,7 @@ public class CharacterController2D : MonoBehaviour
             _lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
             _lastStandingOn = null;
         }
-            #endregion a
+            #endregion Messages
     }
 
     private void HandlePlatforms()      // To calculate the velocity of the things we are standing on
@@ -202,7 +210,7 @@ public class CharacterController2D : MonoBehaviour
         for (int i = 1; i < TotalHorizontalRays - 1; i++)
         {
             var rayVector = new Vector2(deltaMovement.x + rayOrigin.x, deltaMovement.y + rayOrigin.y + (i * _verticalDistanceBetweenRays));       // Taking into account the change of the y axes for the calculation
-            // Debug.DrawRay(rayVector, rayDirection * halfWidth, isRight ? Color.cyan : Color.magenta);
+            Debug.DrawRay(rayVector, rayDirection * halfWidth, isRight ? Color.cyan : Color.magenta);
 
             var raycastHit = Physics2D.Raycast(rayVector, rayDirection, halfWidth, PlatformMask);
             if (!raycastHit)
@@ -330,8 +338,9 @@ public class CharacterController2D : MonoBehaviour
         if (deltaMovement.y > .07f)             // Moving up-ish
             return true;
 
-        deltaMovement.x += isGoingRight ? -SkinWidth : SkinWidth;
+        deltaMovement.x += (isGoingRight ? -SkinWidth : SkinWidth);
         deltaMovement.y = Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * deltaMovement.x);
+
         // Now we know we are moving up a slope and that we are colliding bellow
         State.IsMovingUpSlope = true;
         State.IsCollidingBelow = true;
@@ -346,12 +355,11 @@ public class CharacterController2D : MonoBehaviour
         var slopeDistance = SlopeLimitTangant * (_rayCastBottomRight.x - center);
         var slopeRayVector = new Vector2(center, _rayCastBottomLeft.y);
 
-        Debug.DrawRay(slopeRayVector, direction * slopeDistance, Color.yellow);
+        // Debug.DrawRay(slopeRayVector, direction * slopeDistance, Color.yellow);
         var raycastHit = Physics2D.Raycast(slopeRayVector, direction, slopeDistance, PlatformMask);
         if (!raycastHit)
             return;
 
-        // ReSharper disable CompareOfFloatsByEquality Operator
         var isMovingDownSlope = Mathf.Sign(raycastHit.normal.x) == Mathf.Sign(deltaMovement.x);
         if (!isMovingDownSlope)
             return;

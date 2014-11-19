@@ -42,10 +42,10 @@ public class PlayerBounds : MonoBehaviour
             ApplyBoundsBehaviour(Below, new Vector2(transform.position.x, Bounds.bounds.min.y + colliderSize.y));
 
         if (Right != BoundsBehaviour.Nothing && transform.position.x + colliderSize.x > Bounds.bounds.max.x)
-            ApplyBoundsBehaviour(Right, new Vector2(Bounds.bounds.max.x - colliderSize.x, transform.position.y));
+            ApplyBoundsBehaviour(Right, new Vector2(Bounds.bounds.max.x - colliderSize.x - 0.1f, transform.position.y));
 
         if (Left != BoundsBehaviour.Nothing && transform.position.x - colliderSize.x < Bounds.bounds.min.x)
-            ApplyBoundsBehaviour(Left, new Vector2(Bounds.bounds.min.x + colliderSize.x, transform.position.y));
+            ApplyBoundsBehaviour(Left, new Vector2(Bounds.bounds.min.x + colliderSize.x + 0.1f, transform.position.y));
     }
 
     private void ApplyBoundsBehaviour(BoundsBehaviour behaviour, Vector2 constrainedPosition)

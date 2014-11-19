@@ -4,7 +4,7 @@ using System.Collections;
 public class PointBacon : MonoBehaviour, IPlayerRespawnListener
 {
     public GameObject Effect;
-    public int PointsToAdd = 10;
+    public int PointsToAdd = 3;
     public AudioClip BaconEatSound;
     public Animator Animator;
     public SpriteRenderer Renderer;
@@ -23,6 +23,7 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
             AudioSource.PlayClipAtPoint(BaconEatSound, transform.position, 0.3f);
 
         GameManager.Instance.AddPoints(PointsToAdd);
+        GameManager.Instance.AddBacon(1);
         Instantiate(Effect, transform.position, transform.rotation);
         // Create the Floating text
         FloatingText.Show(string.Format("+{0}!", PointsToAdd), "PointBaconText", new FromWorldPointTextPositioner(Camera.main, transform.position, 1.5f, 50));

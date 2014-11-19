@@ -14,20 +14,17 @@ public class GameHud : MonoBehaviour
             GUILayout.BeginVertical(Skin.GetStyle("GameHud"));
             {
                 GUILayout.Label(string.Format("Points: {0}", GameManager.Instance.Points), Skin.GetStyle("PointsText"));
+                GUILayout.Label(string.Format("        : {0}", GameManager.Instance.Bacon), Skin.GetStyle("PointsText"));
+                GUILayout.Label(string.Format("        : {0} / 5", GameManager.Instance.Balloon), Skin.GetStyle("PointsText"));
 
-                var time = LevelManager.Instance.RunningTime;
-                //GUILayout.Label(string.Format(
-                //    "{0:00}:{1:00} with {2} bonus",
-                //    time.Minutes + (time.Hours * 60),
-                //    time.Seconds,
-                //    LevelManager.Instance.CurrentTimeBonus),
-                //    Skin.GetStyle("TimeText"));
+                /*var time = LevelManager.Instance.RunningTime;
                 GUILayout.Label(string.Format(
                     "Extra {0} bonus points over time {1:00}:{2:00}",
                     LevelManager.Instance.CurrentTimeBonus,
                     time.Minutes + (time.Hours * 60),
                     time.Seconds),
-                    Skin.GetStyle("TimeText"));
+                    Skin.GetStyle("TimeText"));*/
+                // Fixed Layout
             }
             GUILayout.EndVertical();
         }

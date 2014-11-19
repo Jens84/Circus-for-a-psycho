@@ -8,8 +8,9 @@ public class vanishingPlatform : MonoBehaviour {
 	public Color color;
 	private bool isBlinking;
 
-	void OnCollisionEnter2D(Collision2D c) {
-		if (c.gameObject.tag == "Player" && !isBlinking) {
+	public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+		if (other.gameObject.tag == "Player" && !isBlinking) {
 			StartCoroutine("Blinking");
 			StartCoroutine("Destroying");
 		}
