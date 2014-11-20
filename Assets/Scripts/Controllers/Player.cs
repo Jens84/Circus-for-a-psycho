@@ -23,7 +23,7 @@ public class Player : MonoBehaviour, ITakeDamage
     public GameObject DamageEffect;
     public GameObject FireProjectileEffect;
     public Projectile Projectile;   // Public reference to a base type gameObject
-    public Transform ProjectileFireLocation;
+    public Transform ProjectileLocation;
 
     public int Health { get; private set; }
     public bool IsDead { get; private set; }
@@ -153,13 +153,13 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (FireProjectileEffect != null)
         {
-            var effect = (GameObject)Instantiate(FireProjectileEffect, ProjectileFireLocation.position, ProjectileFireLocation.rotation);
+            var effect = (GameObject)Instantiate(FireProjectileEffect, ProjectileLocation.position, ProjectileLocation.rotation);
             effect.transform.parent = transform; // Set the transform of the effect equal to the players, so that it follows 
         }
 
         var direction = _isFacingRight ? Vector2.right : -Vector2.right;
 
-        var projectile = (Projectile)Instantiate(Projectile, ProjectileFireLocation.position, ProjectileFireLocation.rotation);
+        var projectile = (Projectile)Instantiate(Projectile, ProjectileLocation.position, ProjectileLocation.rotation);
         projectile.Initialize(gameObject, direction, _controller.Velocity);
 
         _canFireIn = FireRate;

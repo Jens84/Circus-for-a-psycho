@@ -7,10 +7,10 @@ public class CharacterController2D : MonoBehaviour
     private const float SkinWidth = .02f;
     private const int TotalHorizontalRays = 10;
     private const int TotalVerticalRays = 4;
-    
+
     public static bool PlayerJumped;
     private static readonly float SlopeLimitTangant = Mathf.Tan(75f * Mathf.Deg2Rad);
-    
+
     public ControllerParameters2D DefaultParameters;
     public ControllerParameters2D _overrideParameters;
     public LayerMask PlatformMask;
@@ -43,7 +43,6 @@ public class CharacterController2D : MonoBehaviour
     private GameObject _lastStandingOn;
     private Transform _transform;
     private Vector2 _velocity;
-    private Vector2 _AvgVelocity;
     private Vector3 _localScale;
 
     private Vector3
@@ -67,7 +66,6 @@ public class CharacterController2D : MonoBehaviour
         _transform = transform;
         _localScale = transform.localScale;
         _boxCollider = GetComponent<BoxCollider2D>();
-        _AvgVelocity.x = _AvgVelocity.y = .3f;
 
         var colliderWidth = _boxCollider.size.x * Mathf.Abs(transform.localScale.x) - (2 * SkinWidth);
         _horizontalDistanceBetweenRays = colliderWidth / (TotalVerticalRays - 1);
@@ -116,12 +114,6 @@ public class CharacterController2D : MonoBehaviour
     {
         bool wasGrounded = State.IsCollidingBelow;
         State.Reset();
-
-        // Control for superjumps
-        if (deltaMovement.x > .5f || deltaMovement.y > .5f)
-        {
-            deltaMovement = _AvgVelocity;
-        }
 
         if (HandleCollisions)
         {

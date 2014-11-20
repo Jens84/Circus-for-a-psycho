@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager Instance { get; private set; }   // singleton - (design pattern that restricts the instantiation of a class to one object)
 
+    private static int LvL = 1;
+
     // So that we can access the player and camera anywhere easily through the level manager
     public Player Player { get; private set; }
     public CameraController Camera { get; private set; }
@@ -33,13 +35,14 @@ public class LevelManager : MonoBehaviour
     public Checkpoint2D DebugSpawn;  // to spawn the player in different points while testing
     public int BonusCutoffSeconds;  // the max amount of seconds available the player has to get a bonus, till a checkpoint is reached, set for each level, any time after that the player won't receive a bonus
     public int BonusSecondMultiplier;   // how much bonus the player should receive (based on the time)
-    private int LvL = 1;
 
     public void Awake()                         // initialization
     {
         _savedPoints = GameManager.Instance.Points; // Points through levels
         _savedBacon = 0;
         Instance = this;
+
+        Screen.lockCursor = true;
     }
 
     public void Start()

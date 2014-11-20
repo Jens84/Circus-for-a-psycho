@@ -15,6 +15,7 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
     public GameObject DestroyedEffect;
     public GameObject DamageEffect;
     public Projectile Projectile;
+    public Transform ProjectileLocation;
 
     public int Health { get; private set; }
 
@@ -60,7 +61,7 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
                 return;
 
             // After this point the lion can "see" the player
-            var projectile = (Projectile)Instantiate(Projectile, transform.position, transform.rotation);
+            var projectile = (Projectile)Instantiate(Projectile, ProjectileLocation.position, ProjectileLocation.rotation);
             projectile.Initialize(gameObject, _direction, _controller.Velocity);
             _canFireIn = FireRate;
 

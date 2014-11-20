@@ -15,7 +15,7 @@ NPCs
 	Bosses (texture / coding / animation)
 
 EXTRA:
-	POP THE BALLOONS!
+	POP THE BALLOONS! (DONE!)
 	(Reflective shield (Coding / animation))
 	Random platform (texture / coding)
 	time limit and faster music (coding)
@@ -35,7 +35,7 @@ EXTRA:
 
 Bugfixing
 	super jump on trampoline
-	Bacon sparkles to be reimplemented
+	Bacon sparkles to be reimplemented (fixed)
 	running up slopes
 
 

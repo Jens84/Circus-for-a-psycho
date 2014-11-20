@@ -20,7 +20,6 @@ public class Pause : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        Screen.lockCursor = true;
     }
 
     void Update()

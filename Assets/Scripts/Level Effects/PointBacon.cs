@@ -36,6 +36,7 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
     public void FinishAnimationEvent()
     {
         Renderer.enabled = false; // we dont want to destroy our objects
+        gameObject.particleSystem.emissionRate = 0;
         Animator.SetTrigger("Reset");
     }
 
@@ -44,5 +45,6 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
     {
         _isCollected = false;
         Renderer.enabled = true;
+        gameObject.particleSystem.emissionRate = 1;
     }
 }
