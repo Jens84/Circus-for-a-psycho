@@ -12,18 +12,17 @@ public class Player : MonoBehaviour, ITakeDamage
     public float SpeedAccelerationOnGround = 10f;
     public float SpeedAccelerationInAir = 5f;
     public float FireRate;
-    public Projectile Projectile;   // Public reference to a base type gameObject
-    public GameObject FireProjectileEffect;
     public int MaxHealth = 100;
-    public GameObject DamageEffect;
+    public Animator Animator;
     public AudioClip
         PlayerDeathSound,
         PlayerHealthSound,
         PlayerHitSound,
         PlayerJumpSound,
         PlayerShootSound;
-    public Animator Animator;
-
+    public GameObject DamageEffect;
+    public GameObject FireProjectileEffect;
+    public Projectile Projectile;   // Public reference to a base type gameObject
     public Transform ProjectileFireLocation;
 
     public int Health { get; private set; }
@@ -87,7 +86,7 @@ public class Player : MonoBehaviour, ITakeDamage
         collider2D.enabled = true;
         Health = MaxHealth;
 
-        _controller._overrideParameters = _controller.DefaultParameters; 
+        _controller._overrideParameters = _controller.DefaultParameters;
 
         transform.position = spawnPoint.position;   // Spawn at spawnPoint which is specified
     }

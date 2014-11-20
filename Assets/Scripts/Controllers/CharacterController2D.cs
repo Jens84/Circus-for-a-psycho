@@ -7,20 +7,20 @@ public class CharacterController2D : MonoBehaviour
     private const float SkinWidth = .02f;
     private const int TotalHorizontalRays = 10;
     private const int TotalVerticalRays = 4;
-
+    
+    public static bool PlayerJumped;
     private static readonly float SlopeLimitTangant = Mathf.Tan(75f * Mathf.Deg2Rad);
-
-    public LayerMask PlatformMask;
+    
     public ControllerParameters2D DefaultParameters;
     public ControllerParameters2D _overrideParameters;
-    public static bool PlayerJumped;
+    public LayerMask PlatformMask;
 
     // Properties
-    public ControllerState2D State { get; private set; }
-    public Vector2 Velocity { get { return _velocity; } }
     public bool HandleCollisions { get; set; }
+    public ControllerState2D State { get; private set; }
     public ControllerParameters2D Parameters { get { return _overrideParameters ?? DefaultParameters; } }   // If _override is null return default
     public GameObject StandingOn { get; private set; }
+    public Vector2 Velocity { get { return _velocity; } }
     public Vector3 PlatformVelocity { get; private set; }
 
     public bool CanJump
@@ -38,13 +38,13 @@ public class CharacterController2D : MonoBehaviour
     }
 
     // Private fields
+    private float _jumpIn;
+    private BoxCollider2D _boxCollider;
+    private GameObject _lastStandingOn;
+    private Transform _transform;
     private Vector2 _velocity;
     private Vector2 _AvgVelocity;
-    private Transform _transform;
     private Vector3 _localScale;
-    private BoxCollider2D _boxCollider;
-    private float _jumpIn;
-    private GameObject _lastStandingOn;
 
     private Vector3
         _activeGlobalPlatformPoint,
