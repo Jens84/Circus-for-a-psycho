@@ -34,7 +34,7 @@ EXTRA:
 
 
 Bugfixing
-	super jump on trampoline
+	super jump on trampoline (fixed)
 	Bacon sparkles to be reimplemented (fixed)
 	running up slopes
 

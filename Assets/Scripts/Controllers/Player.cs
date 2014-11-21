@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, ITakeDamage
     public int Health { get; private set; }
     public bool IsDead { get; private set; }
 
+    private bool trampCol = false;
     private float _canFireIn;
 
     public void Awake()
@@ -138,8 +139,11 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (_controller.CanJump && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W)))
         {
-            AudioSource.PlayClipAtPoint(PlayerJumpSound, transform.position, 0.3f);
-            _controller.Jump();
+            if (!trampCol)  // Jump if not colliding with trampoline
+            {
+                AudioSource.PlayClipAtPoint(PlayerJumpSound, transform.position, 0.3f);
+                _controller.Jump();
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -174,5 +178,14 @@ public class Player : MonoBehaviour, ITakeDamage
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // If colliding with trampoline
+        if (other.gameObject.GetComponent<TrampolineAnimationScript>())
+            trampCol = true;
+        else
+            trampCol = false;
     }
 }

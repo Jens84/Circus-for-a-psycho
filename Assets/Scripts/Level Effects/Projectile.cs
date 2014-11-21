@@ -15,7 +15,7 @@ public abstract class Projectile : MonoBehaviour
     {
         // Flip/orient the projectile
         transform.right = direction;
-        
+
         Owner = owner;
         Direction = direction;
         InitialVelocity = initialVelocity;
@@ -30,6 +30,12 @@ public abstract class Projectile : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.GetComponent<Player>())
+        {
+            OnCollidePlayer(other);
+            return;
+        }
+
         /*  Mask collision check explanation
          * 
          *  Layer #     Binary      Decimal
@@ -107,6 +113,10 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected virtual void OnCollideOther(Collider2D other)
+    {
+    }
+
+    protected virtual void OnCollidePlayer(Collider2D other)
     {
     }
 }

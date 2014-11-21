@@ -49,6 +49,11 @@ public class SimpleProjectile : Projectile, ITakeDamage
         DestroyProjectile();
     }
 
+    protected override void OnCollidePlayer(Collider2D other)
+    {
+        DestroyProjectile();
+    }
+
     private void DestroyProjectile()
     {
         if (DestroyedEffect != null)

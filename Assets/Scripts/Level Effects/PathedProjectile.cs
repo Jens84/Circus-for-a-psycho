@@ -49,15 +49,13 @@ public class PathedProjectile : Projectile, ITakeDamage
         }
     }
 
-    protected override void OnCollideOther(Collider2D other)
+    protected override void OnCollidePlayer(Collider2D other)
     {
         if (DestroyEffect != null)
             Instantiate(DestroyEffect, transform.position, transform.rotation);
 
         var player = other.GetComponent<Player>();  // To have this object interact with objects that have the player scipt attached
         if (player != null)                         // Skip for other than player objects
-            Debug.Log("Collided with player, PathedProjectile");
-
-        Destroy(gameObject);
+            Destroy(gameObject);
     }
 }
