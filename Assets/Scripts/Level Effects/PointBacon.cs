@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PointBacon : MonoBehaviour, IPlayerRespawnListener
 {
@@ -10,6 +11,12 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
     public SpriteRenderer Renderer;
 
     private bool _isCollected;
+    private List<IPlayerRespawnListener> _listeners;
+
+    public void Awake()
+    {
+        _listeners = new List<IPlayerRespawnListener>();
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -46,5 +53,9 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
         _isCollected = false;
         Renderer.enabled = true;
         gameObject.particleSystem.emissionRate = 1;
+    }
+    public void AssignObjectToCheckpoint(IPlayerRespawnListener listener)
+    {
+        _listeners.Add(listener);
     }
 }

@@ -330,7 +330,7 @@ public class CharacterController2D : MonoBehaviour
         if (deltaMovement.y > .07f)             // Moving up-ish
             return true;
 
-        deltaMovement.x += (isGoingRight ? -SkinWidth : SkinWidth);
+        // deltaMovement.x += (isGoingRight ? -SkinWidth : SkinWidth);  // Used for slower x movement on slopes
         deltaMovement.y = Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * deltaMovement.x);
 
         // Now we know we are moving up a slope and that we are colliding bellow
