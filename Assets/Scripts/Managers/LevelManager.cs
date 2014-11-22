@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
 
         _started = DateTime.UtcNow;
 
-        var listeners = FindObjectsOfType<MonoBehaviour>().OfType<IPlayerRespawnListener>();    // Find all objects that implement the Interface
+        var listeners = FindObjectsOfType<MonoBehaviour>().OfType<IPlayerRespawnListener>();    // Find all objects that implement the Interface // filtering the mono behaviour objects
         foreach (var listener in listeners)
         {
             for (var i = _checkpoints.Count - 1; i >= 0; i--)   // loop through all the checkpoints backwards

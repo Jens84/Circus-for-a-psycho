@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, ITakeDamage
     {
         AudioSource.PlayClipAtPoint(PlayerDeathSound, transform.position, 1.0f);
 
-        _controller.HandleCollisions = false;   // fall true the world
+        _controller.HandleCollisions = false;   // fall through the world
         collider2D.enabled = false;             // no triggers
         IsDead = true;
         Health = 0;
@@ -185,7 +185,12 @@ public class Player : MonoBehaviour, ITakeDamage
         // If colliding with trampoline
         if (other.gameObject.GetComponent<TrampolineAnimationScript>())
             trampCol = true;
-        else
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        // If colliding with trampoline
+        if (other.gameObject.GetComponent<TrampolineAnimationScript>())
             trampCol = false;
     }
 }

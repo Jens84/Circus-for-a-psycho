@@ -42,7 +42,7 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
     // Called from animation (Add Event.)
     public void FinishAnimationEvent()
     {
-        Renderer.enabled = false; // we dont want to destroy our objects
+        Renderer.enabled = false; // we dont want to destroy our objects and we use the rendered as the objects have animations
         gameObject.particleSystem.emissionRate = 0;
         Animator.SetTrigger("Reset");
     }
