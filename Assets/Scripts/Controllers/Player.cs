@@ -120,34 +120,37 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void HandleInput()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Time.timeScale == 1f)
         {
-            _normalizedHorizontalSpeed = 1;
-            if (!_isFacingRight)
-                Flip();
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            _normalizedHorizontalSpeed = -1;
-            if (_isFacingRight)
-                Flip();
-        }
-        else
-        {
-            _normalizedHorizontalSpeed = 0;
-        }
-
-        if (_controller.CanJump && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W)))
-        {
-            if (!trampCol)  // Jump if not colliding with trampoline
+            if (Input.GetKey(KeyCode.D))
             {
-                AudioSource.PlayClipAtPoint(PlayerJumpSound, transform.position, 0.3f);
-                _controller.Jump();
+                _normalizedHorizontalSpeed = 1;
+                if (!_isFacingRight)
+                    Flip();
             }
-        }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                _normalizedHorizontalSpeed = -1;
+                if (_isFacingRight)
+                    Flip();
+            }
+            else
+            {
+                _normalizedHorizontalSpeed = 0;
+            }
 
-        if (Input.GetMouseButtonDown(0))
-            FireProjectile();
+            if (_controller.CanJump && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W)))
+            {
+                if (!trampCol)  // Jump if not colliding with trampoline
+                {
+                    AudioSource.PlayClipAtPoint(PlayerJumpSound, transform.position, 0.3f);
+                    _controller.Jump();
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0))
+                FireProjectile();
+        }
     }
 
     private void FireProjectile()
