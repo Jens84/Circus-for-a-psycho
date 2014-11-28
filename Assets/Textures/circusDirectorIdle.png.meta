@@ -1,11 +1,31 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 632ad1b32817d544fa56a5cbf3d71889
-=======
-guid: 713bf4bc50fc04d4c85d3a6d23b2faf2
->>>>>>> 7b8f117b12364c513679f3482805fafeec1a70e0
+guid: acbc0cf9061484f46b44d09599970189
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: circusDirectorIdle_0
+    21300002: circusDirectorIdle_1
+    21300004: circusDirectorIdle_2
+    21300006: circusDirectorIdle_3
+    21300008: circusDirectorIdle_4
+    21300010: circusDirectorIdle_5
+    21300012: circusDirectorIdle_6
+    21300014: circusDirectorIdle_7
+    21300016: circusDirectorIdle_8
+    21300018: circusDirectorIdle_9
+    21300020: circusDirectorIdle_10
+    21300022: circusDirectorIdle_11
+    21300024: circusDirectorIdle_12
+    21300026: circusDirectorIdle_13
+    21300028: circusDirectorIdle_14
+    21300030: circusDirectorIdle_15
+    21300032: circusDirectorIdle_16
+    21300034: circusDirectorIdle_17
+    21300036: circusDirectorIdle_18
+    21300038: circusDirectorIdle_19
+    21300040: circusDirectorIdle_20
+    21300042: circusDirectorIdle_21
+    21300044: circusDirectorIdle_22
+    21300046: circusDirectorIdle_23
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,13 +49,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -46,6 +66,246 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: circusDirectorIdle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_2
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_3
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_4
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_5
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_6
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1705
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_8
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_9
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_10
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_11
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_12
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_13
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1430
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_15
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_16
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_17
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_18
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_19
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_20
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1155
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 880
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_22
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 880
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: circusDirectorIdle_23
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 880
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
