@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
-
+	public bool VerticalLevel = false;
     public static LevelManager Instance { get; private set; }   // singleton - (design pattern that restricts the instantiation of a class to one object)
 
     private static int LvL = 1;
@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour
     private int
         _savedPoints,
         _savedBacon;
+	private float distanceToNextCheckpoint;
+	private float distance;
 
     public Checkpoint2D DebugSpawn;  // to spawn the player in different points while testing
     public int BonusCutoffSeconds;  // the max amount of seconds available the player has to get a bonus, till a checkpoint is reached, set for each level, any time after that the player won't receive a bonus
@@ -47,8 +49,13 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
+		if (VerticalLevel)
+		{
+			_checkpoints = FindObjectsOfType<Checkpoint2D>().OrderBy(t => t.transform.position.y).ToList();
+		}
         // Our checkpoints collection will be order by the position of the checkpoints in the x axes
-        _checkpoints = FindObjectsOfType<Checkpoint2D>().OrderBy(t => t.transform.position.x).ToList();
+		else
+        	_checkpoints = FindObjectsOfType<Checkpoint2D>().OrderBy(t => t.transform.position.x).ToList();
         _currentCheckpointIndex = _checkpoints.Count > 0 ? 0 : -1;      // if you find checkpoints in the scene start from 0 else -1
 
         // Cashing in level manager
@@ -62,8 +69,12 @@ public class LevelManager : MonoBehaviour
         {
             for (var i = _checkpoints.Count - 1; i >= 0; i--)   // loop through all the checkpoints backwards
             {
-                var distance = ((MonoBehaviour)listener).transform.position.x - _checkpoints[i].transform.position.x;   // value between checkpoint and the object we are checking
-                if (distance < 0)
+				if (VerticalLevel)
+					distance = ((MonoBehaviour)listener).transform.position.y - _checkpoints[i].transform.position.y;   // value between checkpoint and the object we are checking
+				else
+                	distance = ((MonoBehaviour)listener).transform.position.x - _checkpoints[i].transform.position.x;   // value between checkpoint and the object we are checking
+                
+				if (distance < 0)
                     continue;
 
                 _checkpoints[i].AssignObjectToCheckpoint(listener);
@@ -90,8 +101,12 @@ public class LevelManager : MonoBehaviour
         if (isAtLastCheckpoint)
             return;
 
-        var distanceToNextCheckpoint = _checkpoints[_currentCheckpointIndex + 1].transform.position.x - Player.transform.position.x;
-        if (distanceToNextCheckpoint >= 0)
+		if (VerticalLevel)
+			distanceToNextCheckpoint = _checkpoints[_currentCheckpointIndex + 1].transform.position.y - Player.transform.position.y;
+		else
+        	distanceToNextCheckpoint = _checkpoints[_currentCheckpointIndex + 1].transform.position.x - Player.transform.position.x;
+        
+		if (distanceToNextCheckpoint >= 0)
             return;
 
         // After this line, we have hit a new checkpoint
