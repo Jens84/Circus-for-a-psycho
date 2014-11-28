@@ -5,9 +5,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
-{
+{    
     public float Speed = 8;
     public float FireRate = 1;
+    public int StartingX = -1;
     public int MaxHealth = 200;
     public int PointsToGivePlayer = 50;
     public AudioClip FireSound;
@@ -27,8 +28,8 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
     public void Awake()
     {
         _controller = GetComponent<CharacterController2D>();
-        _direction = new Vector2(-1, 0);    // Initializing moving to the left
-        _startPosition = transform.position;      // Sets the initial value of the bool depending on where the character stands in a new level
+        _direction = new Vector2(StartingX, 0);            // Initializing moving to the left
+        _startPosition = transform.position;        // Sets the initial value of the bool depending on where the character stands in a new level
         Health = MaxHealth;
     }
 
@@ -68,7 +69,6 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
             if (FireSound != null)
                 AudioSource.PlayClipAtPoint(FireSound, transform.position, 0.3f);
         }
-
     }
 
     // From ITakeDamage, to respond when he is hit by a projectile

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, ITakeDamage
     private CharacterController2D _controller;
     private float _normalizedHorizontalSpeed;       // -1 Or 1 Moving to the left or to the right
 
+    public bool IsCarringHay = false;
     public float MaxSpeed = 8;
     public float SpeedAccelerationOnGround = 10f;
     public float SpeedAccelerationInAir = 5f;
@@ -150,6 +151,14 @@ public class Player : MonoBehaviour, ITakeDamage
 
             if (Input.GetMouseButtonDown(0))
                 FireProjectile();
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (!IsCarringHay)
+                {
+                    IsCarringHay = true;
+                }
+            }
         }
     }
 
@@ -188,6 +197,15 @@ public class Player : MonoBehaviour, ITakeDamage
         // If colliding with trampoline
         if (other.gameObject.GetComponent<TrampolineAnimationScript>())
             trampCol = true;
+    }
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        // If colliding with hay and pressed E
+        if (other.tag == "Hay")
+        {
+            
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)

@@ -16,6 +16,7 @@ NPCs
 
 EXTRA:
 	POP THE BALLOONS! (DONE!)
+	Trampoline jump based on angle
 	(Reflective shield (Coding / animation))
 	Random platform (texture / coding)
 	time limit and faster music (coding)
