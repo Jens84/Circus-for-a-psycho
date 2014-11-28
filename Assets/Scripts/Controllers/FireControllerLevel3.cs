@@ -31,7 +31,7 @@ public class FireControllerLevel3 : MonoBehaviour, IPlayerRespawnListener
 	public void OnPlayerRespawnInThisCheckPoint(Checkpoint2D checkpoint, Player player)
 	{
 		transform.localScale = new Vector3(1, 1, 1);
-		float toY = checkpoint.transform.position.y - 10;
+		float toY = checkpoint.transform.position.y - 20;
 		transform.position = new Vector3(_startPosition.x, toY, _startPosition.z);
 		//gameObject.SetActive(true);
 	}

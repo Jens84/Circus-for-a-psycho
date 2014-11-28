@@ -11,49 +11,55 @@ public class SimpleGiraffeAI : MonoBehaviour
 
     private CharacterController2D _controller;      // To have this player interact with our platforms
     private Vector2 _direction;                     // Flip everytime he hits an edge
-    private Vector2 _startPosition;                 // Respawning
+    private Player _player;
 
     public void Awake()
     {
         _controller = GetComponent<CharacterController2D>();
-        _direction = new Vector2(StartingX, 0);            // Initializing moving to the left
-        _startPosition = transform.position;        // Sets the initial value of the bool depending on where the character stands in a new level
+        _direction = new Vector2(StartingX, 0);            // Initializing looking to the left
+        _player = GameObject.FindObjectOfType<Player>();
     }
 
     public void Update()
     {
-        if (IsFollowing)
+        if (_player.IsCarringHay)
         {
-            _controller.SetHorizontalForce(_direction.x * Speed);
-            // if moving to the left and collide to the left || etc
-            if ((_direction.x < 0 && _controller.State.IsCollidingLeft) || (_direction.x > 0 && _controller.State.IsCollidingRight))
-            {
-                _direction = -_direction;
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); // Reverse
-            }
-
-            // Check if the player is close behind the lion
-            var raycastBehind = Physics2D.Raycast(transform.position, -_direction, 15, 1 << LayerMask.NameToLayer("Player"));
+            // Check if the player is close behind the giraffe
+            var raycastBehind = Physics2D.Raycast(transform.position, -_direction, 10, 1 << LayerMask.NameToLayer("Player"));
             if (raycastBehind)
             {
                 _direction = -_direction;
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); // Reverse
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
-
-            // To check if the Player can be hit by this object
-            var raycast = Physics2D.Raycast(transform.position, _direction, 20, 1 << LayerMask.NameToLayer("Player"));
-            if (!raycast)
+            // If infront continue
+            var raycastFront = Physics2D.Raycast(transform.position, _direction, 10, 1 << LayerMask.NameToLayer("Player"));
+            if (!raycastFront)
                 return;
 
             // After this point the giraffe can "see" the player
+            // if moving to the left and collide to the left || etc
+            if ((_direction.x < 0 && _controller.State.IsCollidingLeft) || (_direction.x > 0 && _controller.State.IsCollidingRight))
+                _direction = -_direction;
+
             if (GiraffeSound != null && GiraffeSound.isReadyToPlay)
                 AudioSource.PlayClipAtPoint(GiraffeSound, transform.position, 0.3f);
 
-            Player player = GameObject.FindObjectOfType<Player>();
+            _controller.SetHorizontalForce(_direction.x * Speed);
+
+            if (!_controller.State.IsCollidingLeft && !_controller.State.IsCollidingRight)
+                if (_controller.Velocity.x > 0)
+                    transform.localScale = new Vector3((_direction.x * transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else
         {
             _controller.SetHorizontalForce(0);
         }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // If colliding with player, eat the hay
+        if (other.gameObject.GetComponent<Player>())
+            _player.IsCarringHay = false;
     }
 }

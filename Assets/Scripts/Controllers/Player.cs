@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, ITakeDamage
     public int Health { get; private set; }
     public bool IsDead { get; private set; }
 
-    private bool trampCol = false;
+    private bool trampCol, isInHay = false;
     private float _canFireIn;
 
     public void Awake()
@@ -154,10 +154,10 @@ public class Player : MonoBehaviour, ITakeDamage
 
             if (Input.GetKey(KeyCode.E))
             {
-                if (!IsCarringHay)
-                {
+                if (isInHay)
                     IsCarringHay = true;
-                }
+                else
+                    IsCarringHay = false;
             }
         }
     }
@@ -201,11 +201,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public void OnTriggerStay2D(Collider2D other)
     {
-        // If colliding with hay and pressed E
         if (other.tag == "Hay")
-        {
-            
-        }
+            isInHay = true;
     }
 
     public void OnTriggerExit2D(Collider2D other)
@@ -213,5 +210,8 @@ public class Player : MonoBehaviour, ITakeDamage
         // If colliding with trampoline
         if (other.gameObject.GetComponent<TrampolineAnimationScript>())
             trampCol = false;
+
+        if (other.tag == "Hay")
+            isInHay = false;
     }
 }
