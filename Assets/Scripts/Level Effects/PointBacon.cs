@@ -54,6 +54,7 @@ public class PointBacon : MonoBehaviour, IPlayerRespawnListener
         Renderer.enabled = true;
         gameObject.particleSystem.emissionRate = 1;
     }
+
     public void AssignObjectToCheckpoint(IPlayerRespawnListener listener)
     {
         _listeners.Add(listener);

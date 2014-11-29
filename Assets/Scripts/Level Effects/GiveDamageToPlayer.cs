@@ -2,7 +2,14 @@
 
 public class GiveDamageToPlayer : MonoBehaviour
 {
-    public int DamageToGive = 10;
+    public int
+        DamageToGive = 10,
+        minDx = 5,
+        maxDx = 10,
+        minDy = 5,
+        maxDy = 10;
+
+
 
     private Vector2
         _lastPosition,
@@ -29,7 +36,7 @@ public class GiveDamageToPlayer : MonoBehaviour
         // (get the sign from the total velocity (1 or -1 based on the direction the player is going), all directions knockback)
         // (with the clamp we are constraining the knockback direction, get rid of the sign and scale the factor)
         controller.SetForce(new Vector2(
-            -1 * Mathf.Sign(totalVelocity.x) * Mathf.Clamp(Mathf.Abs(totalVelocity.x) * 3, 5, 10),
-            -1 * Mathf.Sign(totalVelocity.y) * Mathf.Clamp(Mathf.Abs(totalVelocity.y) * 3, 1, 5)));
+            -1 * Mathf.Sign(totalVelocity.x) * Mathf.Clamp(Mathf.Abs(totalVelocity.x) * 3, minDx, maxDx),
+            -1 * Mathf.Sign(totalVelocity.y) * Mathf.Clamp(Mathf.Abs(totalVelocity.y) * 3, minDy, maxDy)));
     }
 }

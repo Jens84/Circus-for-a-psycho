@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public int Health { get; private set; }
     public bool IsDead { get; private set; }
+    public bool IsRespawning { get; private set; }
 
     private bool trampCol, isInHay = false;
     private float _canFireIn;
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public void Update()
     {
+        IsRespawning = false;
         _canFireIn -= Time.deltaTime;
 
         if (!IsDead)
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public void RespawnAt(Transform spawnPoint)
     {
+        IsRespawning = true;
         if (!_isFacingRight)
             Flip();
 

@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
-{    
+{
     public float Speed = 8;
     public float FireRate = 1;
     public int StartingX = -1;

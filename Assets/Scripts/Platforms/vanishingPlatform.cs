@@ -1,13 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class vanishingPlatform : MonoBehaviour
+public class vanishingPlatform : MonoBehaviour, IPlayerRespawnListener
 {
     public Color color;
     public float vanishTime;
     public float blinkingSpeed;
 
     private bool isBlinking;
+    private Color _startColor;
+    private Vector3
+        _startPosition,
+        _startScale;
+
+    public void Awake()
+    {
+        _startPosition = transform.position;
+        _startScale = transform.localScale;
+        _startColor = renderer.material.color;
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,6 +49,20 @@ public class vanishingPlatform : MonoBehaviour
     IEnumerator Destroying()
     {
         yield return new WaitForSeconds(vanishTime);
-        gameObject.SetActive(false);
+        gameObject.renderer.enabled = false;
+        gameObject.collider2D.enabled = false;
+    }
+
+    // From IPlayerRespawnListener, to respond when the player get reInstantiated
+    public void OnPlayerRespawnInThisCheckPoint(Checkpoint2D checkpoint, Player player)
+    {
+        isBlinking = false;
+        StopCoroutine("Blinking");
+        StopCoroutine("Destroying");
+        transform.localScale = _startScale;
+        transform.position = _startPosition;
+        gameObject.renderer.enabled = true;
+        renderer.material.SetColor("_Color", _startColor);
+        gameObject.collider2D.enabled = true;
     }
 }

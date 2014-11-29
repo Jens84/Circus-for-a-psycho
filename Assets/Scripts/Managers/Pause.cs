@@ -44,9 +44,9 @@ public class Pause : MonoBehaviour
             {
                 Application.LoadLevel(0);
             }
-            if (GUI.Button(new Rect((groupWidth / 2) - (buttonWidth / 2), (groupHeight * 0.6f), buttonWidth, buttonHeight), "Restart Game", customGuiStyle))
+            if (GUI.Button(new Rect((groupWidth / 2) - (buttonWidth / 2), (groupHeight * 0.6f), buttonWidth, buttonHeight), "Restart Level", customGuiStyle))
             {
-                Application.LoadLevel(1);
+                Application.LoadLevel(Application.loadedLevel);
             }
             if (GUI.Button(new Rect((groupWidth / 2) - (buttonWidth / 2), (groupHeight * 0.7f), buttonWidth, buttonHeight), "Quit Game", customGuiStyle))
             {
