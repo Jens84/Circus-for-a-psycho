@@ -21,8 +21,10 @@ public class Player : MonoBehaviour, ITakeDamage
         PlayerHitSound,
         PlayerJumpSound,
         PlayerShootSound;
-    public GameObject DamageEffect;
-    public GameObject FireProjectileEffect;
+    public GameObject
+        DamageEffect,
+        FireProjectileEffect,
+        Hay;
     public Projectile Projectile;   // Public reference to a base type gameObject
     public Transform ProjectileLocation;
 
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private bool trampCol, isInHay = false;
     private float _canFireIn;
+    private GameObject _hay;
 
     public void Awake()
     {
@@ -157,11 +160,32 @@ public class Player : MonoBehaviour, ITakeDamage
 
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInHay)
-                    IsCarringHay = true;
-                else
-                    IsCarringHay = false;
+                PickHay();
             }
+        }
+    }
+
+    public void DestroyHay()
+    {
+        if (IsCarringHay)
+        {
+            IsCarringHay = false;
+            Destroy(_hay, 1.5f);
+        }
+    }
+
+    private void PickHay()
+    {
+        if (isInHay && !IsCarringHay)
+        {
+            IsCarringHay = true;
+            _hay = Instantiate(Hay, transform.position, transform.rotation) as GameObject; ;
+            _hay.transform.parent = this.transform;
+        }
+        else if (!isInHay && IsCarringHay)
+        {
+            IsCarringHay = false;
+            Destroy(_hay);
         }
     }
 

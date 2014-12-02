@@ -25,14 +25,14 @@ public class SimpleGiraffeAI : MonoBehaviour
         if (_player.IsCarringHay)
         {
             // Check if the player is close behind the giraffe
-            var raycastBehind = Physics2D.Raycast(transform.position, -_direction, 10, 1 << LayerMask.NameToLayer("Player"));
+            var raycastBehind = Physics2D.Raycast(transform.position, -_direction, 15, 1 << LayerMask.NameToLayer("Player"));
             if (raycastBehind)
             {
                 _direction = -_direction;
                 transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
             // If infront continue
-            var raycastFront = Physics2D.Raycast(transform.position, _direction, 10, 1 << LayerMask.NameToLayer("Player"));
+            var raycastFront = Physics2D.Raycast(transform.position, _direction, 15, 1 << LayerMask.NameToLayer("Player"));
             if (!raycastFront)
                 return;
 
@@ -54,12 +54,5 @@ public class SimpleGiraffeAI : MonoBehaviour
         {
             _controller.SetHorizontalForce(0);
         }
-    }
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        // If colliding with player, eat the hay
-        if (other.gameObject.GetComponent<Player>())
-            _player.IsCarringHay = false;
     }
 }

@@ -49,7 +49,7 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
                 return;
 
             // Check if the player is close behind the lion
-            var raycastBehind = Physics2D.Raycast(transform.position, -_direction, 15, 1 << LayerMask.NameToLayer("Player"));
+            var raycastBehind = Physics2D.Raycast(transform.position, -_direction, 10, 1 << LayerMask.NameToLayer("Player"));
             if (raycastBehind)
             {
                 _direction = -_direction;
@@ -57,7 +57,7 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
             }
 
             // To check if the Player can be hit by this object
-            var raycast = Physics2D.Raycast(transform.position, _direction, 20, 1 << LayerMask.NameToLayer("Player"));
+            var raycast = Physics2D.Raycast(transform.position, _direction, 15, 1 << LayerMask.NameToLayer("Player"));
             if (!raycast)
                 return;
 
