@@ -18,12 +18,10 @@ public class DirectorFollowPath : MonoBehaviour
 
     private IEnumerator<Transform> _currentPoint;
 	private bool _isFacingRight;
-	private bool MakeSwoop;		
 
 	public void Awake()
 	{
 		_isFacingRight = transform.localScale.x > 0;       // Sets the initial value of the bool depending on where the character stands in a new level
-		MakeSwoop = true;
 	}
 
     public void Start()
@@ -45,19 +43,14 @@ public class DirectorFollowPath : MonoBehaviour
 
     public void Update()
     {
+		if (_currentPoint == null || _currentPoint.Current == null)
+			return;
+		if (Type == FollowType.MoveTowards)
+			transform.position = Vector3.MoveTowards (transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
+		var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;   // sqrMagnitude is faster than the sqroot
+		if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+			_currentPoint.MoveNext ();
 
-		if (MakeSwoop)
-		{
-			if (_currentPoint == null || _currentPoint.Current == null)
-				return;
-			if (Type == FollowType.MoveTowards)
-				transform.position = Vector3.MoveTowards (transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
-			else if (Type == FollowType.Lerp)
-				transform.position = Vector3.Lerp (transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
-			var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;   // sqrMagnitude is faster than the sqroot
-			if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
-				_currentPoint.MoveNext ();
-		}
 
 		if (_currentPoint.Current.position.x > transform.position.x)
 		{
