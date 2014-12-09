@@ -11,12 +11,14 @@ public class FireCurtainScript : MonoBehaviour
 	private float nextFire;
 
 	void Update(){
-		
-		if (Time.time > nextFire) {
+		if (EndOfLevel3.elevate)
+		{
+			if (Time.time > nextFire) {
 			
-			nextFire = Time.time + fireRate;
-			Instantiate(fireCurtain, spawn.position, spawn.rotation);
-			AudioSource.PlayClipAtPoint(sound, transform.position, 0.3f);
+				nextFire = Time.time + fireRate;
+				Instantiate(fireCurtain, spawn.position, spawn.rotation);
+				AudioSource.PlayClipAtPoint(sound, transform.position, 0.3f);
+			}
 		}
 	}
 }
