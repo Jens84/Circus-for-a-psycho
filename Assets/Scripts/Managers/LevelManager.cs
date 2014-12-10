@@ -98,7 +98,7 @@ public class LevelManager : MonoBehaviour
         if (isAtLastCheckpoint)
             return;
 
-        
+
         float distanceToNextCheckpoint;
         if (VerticalLevel)
             distanceToNextCheckpoint = _checkpoints[_currentCheckpointIndex + 1].transform.position.y - Player.transform.position.y;
@@ -151,6 +151,10 @@ public class LevelManager : MonoBehaviour
         }
 
         LvL += 1;
+
+        // Fading
+        float fadeTime = this.GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
 
         if (string.IsNullOrEmpty(levelName))
             Application.LoadLevel(0);

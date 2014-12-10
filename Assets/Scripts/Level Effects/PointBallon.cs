@@ -15,19 +15,35 @@ public class PointBallon : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<SimpleProjectile>() == null)   // Exit when not knife
-            return;
+        if (other.GetComponent<GiveDamageToPlayer>() != null) // break with + no points (for fire)
+        {
+            // Debug.Log("There goes the balloon");
+            if (BaloonBurstSound != null)
+                AudioSource.PlayClipAtPoint(BaloonBurstSound, transform.position, 0.4f);
 
-        if (BaloonBurstSound != null)
-            AudioSource.PlayClipAtPoint(BaloonBurstSound, transform.position, 0.4f);
+            Instantiate(balloonBurst, transform.position, transform.rotation);
+            // Create the Floating text
+            FloatingText.Show(string.Format("POP"), "PointsText", new FromWorldPointTextPositioner(Camera.main, transform.position, 1.5f, 50));
 
-        GameManager.Instance.AddPoints(PointsToAdd);
-        GameManager.Instance.AddBalloon(1);
-        Instantiate(balloonBurst, transform.position, transform.rotation);
-        // Create the Floating text
-        FloatingText.Show(string.Format("POP"), "PointsText", new FromWorldPointTextPositioner(Camera.main, transform.position, 1.5f, 50));
+            // We only want the ballons once per level
+            Destroy(gameObject);
+        }
+        else
+        {
+            if (other.GetComponent<SimpleProjectile>() == null)   // Exit when not knife 
+                return;
 
-        // We only want the ballons once per level
-        Destroy(gameObject);
+            if (BaloonBurstSound != null)
+                AudioSource.PlayClipAtPoint(BaloonBurstSound, transform.position, 0.4f);
+
+            GameManager.Instance.AddPoints(PointsToAdd);
+            GameManager.Instance.AddBalloon(1);
+            Instantiate(balloonBurst, transform.position, transform.rotation);
+            // Create the Floating text
+            FloatingText.Show(string.Format("POP"), "PointsText", new FromWorldPointTextPositioner(Camera.main, transform.position, 1.5f, 50));
+
+            // We only want the ballons once per level
+            Destroy(gameObject);
+        }
     }
 }

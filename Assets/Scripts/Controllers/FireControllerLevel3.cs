@@ -34,8 +34,10 @@ public class FireControllerLevel3 : MonoBehaviour
         }
         else if (transform.position.y <= 205) // Top
         {
-            if (transform.position.y > 100)
-                transform.Translate(0, 0.7f * FireSpeed * Time.deltaTime, 0);
+            if (transform.position.y > 130)
+                transform.Translate(0, 1.0f * FireSpeed * Time.deltaTime, 0);
+            else if (transform.position.y > 100)
+                transform.Translate(0, 0.8f * FireSpeed * Time.deltaTime, 0);
             else if (transform.position.y > 30 && transform.position.y < 80)
                 transform.Translate(0, 1.6f * FireSpeed * Time.deltaTime, 0);
             else

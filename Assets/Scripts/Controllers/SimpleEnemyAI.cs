@@ -130,8 +130,7 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
             new CenteredTextPositioner(.3f));
 
         yield return new WaitForSeconds(0.5f);
-
-        FloatingText.Show("The Lion fled the circus!", "CheckpointText", new CenteredTextPositioner(.3f));
+        FloatingText.Show("The Lion fled the circus!", "CheckpointText", new CenteredTextPositioner(.2f));
 
         yield return new WaitForSeconds(1f);
     }
