@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
+	public static GameObject SubtitleBar;
+
     public bool VerticalLevel = false;
     public static LevelManager Instance { get; private set; }   // singleton - (design pattern that restricts the instantiation of a class to one object)
 
@@ -47,6 +49,9 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
+		SubtitleBar = GameObject.FindWithTag("SubtitleTag");
+		SubtitleBar.SetActive(false);
+
         if (VerticalLevel)
             _checkpoints = FindObjectsOfType<Checkpoint2D>().OrderBy(t => t.transform.position.y).ToList();
         else
@@ -134,7 +139,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameManager.Instance.AddPoints(CurrentTimeBonus);
         // Show all points in end of level
-        FloatingText.Show(string.Format("{0} points!", GameManager.Instance.Points), "CheckpointText", new CenteredTextPositioner(.1f));
+        FloatingText.Show(string.Format("+{0} points!", GameManager.Instance.Points), "CheckpointText", new CenteredTextPositioner(.1f));
         yield return new WaitForSeconds(5f);
 
         GameManager.Instance.ResetBacon(0);
@@ -169,14 +174,20 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator DisplayInfoTextCo(string[] text)
     {
-
+		// (transform.localScale.x / 256) * SubtitleTextPositioner.SubtitleSize.x
         for (int i = 0; i < text.Length; i++)
         {
+			SubtitleBar.transform.localScale = 
+				new Vector3(11.0f,
+				            0.5f,
+				            transform.localScale.z);
+			SubtitleBar.SetActive(true);
+
             FloatingText.Show(text[i],
                 "InformationText",
-                new CenteredTextPositioner(.1f));
-
-            yield return new WaitForSeconds(1f);
+                new SubtitleTextPositioner(4f));
+		
+            yield return new WaitForSeconds(3f);
         }
     }
 
