@@ -18,7 +18,7 @@ public class HealthBarEnemy : MonoBehaviour
 
         if (Enemy.MaxHealth > 20)
         {
-            if (Enemy.Health <= 10)
+            if (Enemy.Health < 10)
                 gameObject.SetActive(false);
         }
         else
