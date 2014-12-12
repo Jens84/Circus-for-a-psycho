@@ -134,7 +134,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameManager.Instance.AddPoints(CurrentTimeBonus);
         // Show all points in end of level
-        FloatingText.Show(string.Format("+{0} points!", GameManager.Instance.Points), "CheckpointText", new CenteredTextPositioner(.1f));
+        FloatingText.Show(string.Format("{0} points!", GameManager.Instance.Points), "CheckpointText", new CenteredTextPositioner(.1f));
         yield return new WaitForSeconds(5f);
 
         GameManager.Instance.ResetBacon(0);
