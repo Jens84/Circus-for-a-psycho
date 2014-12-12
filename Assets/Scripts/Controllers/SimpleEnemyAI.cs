@@ -131,7 +131,6 @@ public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListener
         yield return new WaitForSeconds(0.5f);
         FloatingText.Show("The Lion fled the circus!", "CheckpointText", new CenteredTextPositioner(.2f));
         gameObject.SetActive(false);
-
         yield return new WaitForSeconds(1f);
     }
 
