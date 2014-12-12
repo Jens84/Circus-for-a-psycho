@@ -12,7 +12,7 @@ public class FinalText : MonoBehaviour
     {
         if (showText)
         {
-            GUI.Label(textArea, "Thank you for playing this game!", customGuiStyle);
+            GUI.Label(textArea, "Thank you for playing the game!", customGuiStyle);
         }
     }
 
