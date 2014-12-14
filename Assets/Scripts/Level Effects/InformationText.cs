@@ -10,7 +10,6 @@ public class InformationText : MonoBehaviour
         if (other.GetComponent<Player>() == null)
             return;
 
-
         if (InfoSound != null)
             AudioSource.PlayClipAtPoint(InfoSound, transform.position, 1f);
 
